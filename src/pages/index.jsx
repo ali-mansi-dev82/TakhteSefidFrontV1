@@ -1,8 +1,11 @@
-import { TextField } from '@mui/material'
-import React from 'react'
+import { Button, TextField } from "@mui/material";
+import React from "react";
 
 export default function index() {
   return (
-    <main><TextField label="موبایل" dir='rtl'/></main>
-  )
+    <main className="" style={{ padding: "3rem" }}>
+      <TextField label="موبایل" dir="rtl" />
+      <Button variant="contained" size="large">تایید</Button>
+    </main>
+  );
 }
