@@ -10,7 +10,15 @@
     font-display: swap;
     src: url("./assets/fonts/medium/IranYekanX_medium.woff2");
   }
-} 
+}
+@font-face {
+  font-family: "YekanBakhFaNum";
+  src: url("./assets/fonts/YekanBakhFaNum-Regular.woff");
+}
+@font-face {
+  font-family: "IranYekanXRegular";
+  src: url("./assets/fonts/regular/IranYekanX_regular.woff");
+}
 /*
 @font-face {
   font-family: "IranYekanX";
@@ -27,7 +35,7 @@
 
 body {
   margin: 0;
-  font-family: "IranYekanX", "IRANSans", "Segoe UI", "Roboto", "Oxygen",
+  font-family: "IranYekanXRegular", "IRANSans", "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -35,18 +43,47 @@ body {
   direction: rtl;
 }
 .IranYekanX {
-  font-family: "IranYekanX";
+  font-family: "IranYekanXRegular";
 }
-.Fanum {
-  font-family: "Fanum" !important;
+.YekanBakhFaNum {
+  font-family: "YekanBakhFaNum" !important;
 }
-span.Fanum {
-  font-family: "Fanum" !important;
+span.YekanBakhFaNum {
+  font-family: "YekanBakhFaNum" !important;
 }
 * {
-  font-family: "IranYekanX", "IRANSans";
+  font-family: "IranYekanXRegular", "IRANSans";
   direction: rtl;
 }
 :root {
   background-color: white;
+}
+@layer utilities {
+  .check-list-bullet {
+    direction: rtl;
+    @apply list-none pr-5;
+    list-style-type: none;
+    background-image: url("./assets/icons/circle-check.svg");
+    background-size: 16px 16px;
+    background-position: 100% 50%;
+    background-repeat: no-repeat;
+  }
+  .call-list-bullet {
+    direction: rtl;
+    @apply list-none pr-5;
+    list-style-type: none;
+    background-image: url("./assets/icons/phone-call.svg");
+    background-size: 16px 16px;
+    background-position: 100% 50%;
+    background-repeat: no-repeat;
+  }
+  .message-list-bullet {
+    direction: rtl;
+    @apply list-none pr-5;
+    list-style-type: none;
+    background-image: url("./assets/icons/message-circle-more.svg");
+    background-size: 16px 16px;
+    background-position: 100% 50%;
+    background-repeat: no-repeat;
+  }
 }
