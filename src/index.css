@@ -1,0 +1,52 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@layer base {
+  @font-face {
+    font-family: "IranYekanX";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("./assets/fonts/medium/IranYekanX_medium.woff2");
+  }
+} 
+/*
+@font-face {
+  font-family: "IranYekanX";
+  src: url("./../public/font/YekanBakhFaNum-Regular.woff");
+}
+@font-face {
+  font-family: "Fanum";
+  src: url("./../public/font/Shabnam-FD-WOL.woff");
+}
+@font-face {
+  font-family: "IRANSans";
+  src: url("./../public/font/IranSans.woff");
+} */
+
+body {
+  margin: 0;
+  font-family: "IranYekanX", "IRANSans", "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  direction: rtl;
+}
+.IranYekanX {
+  font-family: "IranYekanX";
+}
+.Fanum {
+  font-family: "Fanum" !important;
+}
+span.Fanum {
+  font-family: "Fanum" !important;
+}
+* {
+  font-family: "IranYekanX", "IRANSans";
+  direction: rtl;
+}
+:root {
+  background-color: white;
+}
