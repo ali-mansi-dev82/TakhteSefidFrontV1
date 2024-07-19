@@ -1,6 +1,6 @@
 import React from "react";
 
-import Navbar from "../../modules/auth/components/navbar/navbar";
+import Navbar from "../../modules/auth/navbar/desktop/index";
 import MainContainer from "../../components/container";
 
 const BasicLayoutDesktop = ({ children, containerClass, searchText = "" }) => {

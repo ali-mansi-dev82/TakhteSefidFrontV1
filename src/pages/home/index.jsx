@@ -1,13 +1,9 @@
 import React from "react";
+import Mobile from "./mobile";
+import Desktop from "./desktop";
 
 const index = ({ isMobile }) => {
-  return (
-    <div className="flex items-center justify-center h-screen bg-gray-100">
-      <h1 className="text-4xl  text-blue-500">
-        {isMobile ? "mobile" : "desktop"}
-      </h1>
-    </div>
-  );
+  return isMobile ? <Mobile /> : <Desktop />;
 };
 
 export default index;
