@@ -16,9 +16,9 @@ const theme = createTheme({
   palette: {
     mode: "light",
     primary: {
-      light: "#2B7FAD",
-      main: "#22668A",
-      dark: "#1E5979",
+      light: "#B6EBE5",
+      main: "#008C7B",
+      dark: "#006E61",
       contrastText: "#fff",
     },
   },
@@ -69,19 +69,37 @@ const theme = createTheme({
     MuiButton: {
       defaultProps: {
         sx: {
-          paddingY: "10px",
+          paddingY: "6px",
           borderRadius: "8px",
           boxShadow: "none",
         },
       },
       styleOverrides: {
         contained: {
-          fontWeight: 500,
+          fontWeight: 100,
         },
         outlined: {
           borderColor: "#E5E7EB",
           color: "#111928",
         },
+      },
+    },
+    MuiAccordionSummary: {
+      styleOverrides: {
+        root: {
+          backgroundColor: "#F3F4F6",
+          color: "#4B5563",
+          padding: "8px",
+        },
+        expanded: {
+          padding: "0px",
+          margin: "0px",
+        },
+      },
+    },
+    MuiAccordionDetails: {
+      styleOverrides: {
+        root: { color: "#6B7280", fontSize: "14px", lineHeight: "28px" },
       },
     },
   },

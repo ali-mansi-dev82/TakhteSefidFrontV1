@@ -1,17 +1,21 @@
 import React from "react";
 
-import ButtonNavigation from "../../modules/auth/components/button_navigation/button_navigaton";
-import Navbar from "../../modules/auth/components/navbar/navbar";
+import Navbar from "../../modules/auth/navbar/mobile/index";
 import MainContainer from "../../components/container";
 
-const BasicLayoutMobile = ({ children, searchText, filter = [] }) => {
+const BasicLayoutMobile = ({
+  children,
+  containerClass,
+  searchText,
+  filter = [],
+}) => {
   return (
     <>
       <Navbar searchText={searchText} />
       <main
         className={`${
-          filter?.length > 0 ? `mt-[122px]` : `mt-[72px]`
-        } mb-[65px]`}
+          filter?.length > 0 ? `mt-[122px]` : `mt-[55px]`
+        } mb-[65px] ${containerClass}`}
       >
         {filter?.length > 0 && (
           <div className="fixed top-[72px] right-0 left-0 flex flex-row gap-2 border-b border-gray-300 px-3 py-2 bg-white z-40">
@@ -31,7 +35,7 @@ const BasicLayoutMobile = ({ children, searchText, filter = [] }) => {
           {children}
         </MainContainer>
       </main>
-      <ButtonNavigation />
+      {/* <ButtonNavigation /> */}
     </>
   );
 };
