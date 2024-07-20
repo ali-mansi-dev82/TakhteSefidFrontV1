@@ -8,14 +8,15 @@ const BasicLayoutMobile = ({
   containerClass,
   searchText,
   filter = [],
+  container,
 }) => {
   return (
     <>
       <Navbar searchText={searchText} />
       <main
-        className={`${
+        className={` pt-[55px]${
           filter?.length > 0 ? `mt-[122px]` : `mt-[55px]`
-        } mb-[65px] ${containerClass}`}
+        }  ${containerClass || ""}`}
       >
         {filter?.length > 0 && (
           <div className="fixed top-[72px] right-0 left-0 flex flex-row gap-2 border-b border-gray-300 px-3 py-2 bg-white z-40">
@@ -29,11 +30,13 @@ const BasicLayoutMobile = ({
             ))}
           </div>
         )}
-        <MainContainer
-          className={`w-full flex flex-col justify-center gap-8 py-8 `}
-        >
-          {children}
-        </MainContainer>
+        {container === "off" ? (
+          children
+        ) : (
+          <MainContainer className={`w-full flex justify-center gap-5 py-8 `}>
+            {children}
+          </MainContainer>
+        )}
       </main>
       {/* <ButtonNavigation /> */}
     </>

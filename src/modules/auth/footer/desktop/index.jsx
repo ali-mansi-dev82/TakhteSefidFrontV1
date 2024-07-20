@@ -6,7 +6,7 @@ import { Button } from "@mui/material";
 
 const index = () => {
   return (
-    <div className="flex flex-row justify-center bg-white items-center border-b border-gray-200 h-[65px] fixed top-0 left-0 right-0 z-50">
+    <div className="flex flex-row justify-center bg-white items-center border-b border-gray-200 h-[65px] z-50">
       <MainContainer className="flex justify-between items-center">
         <Logo />
         <div className="flex gap-2">
