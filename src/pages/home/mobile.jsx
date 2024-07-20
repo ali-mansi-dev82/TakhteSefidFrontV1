@@ -19,7 +19,7 @@ import chat from "../../assets/images/chat.png";
 import meet from "../../assets/images/meet.png";
 import track from "../../assets/images/track.png";
 import MainContainer from "../../components/container";
-import Footer from "../../modules/auth/footer/mobile";
+import Footer from "../../modules/auth/footer";
 
 const Mobile = () => {
   const [expanded, setExpanded] = useState();
@@ -30,7 +30,7 @@ const Mobile = () => {
   return (
     <BasicLayoutMobile container="off">
       <div className="flex flex-col gap-12">
-        <MainContainer className="flex flex-col gap-12">
+        <MainContainer className="flex flex-col gap-12 py-6">
           <div className="flex flex-col justify-center items-center gap-6">
             <img src={girl} alt="girl" className="w-[400px]" />
             <div className="flex flex-col items-center gap-4">
@@ -41,10 +41,11 @@ const Mobile = () => {
                 همین حالا به تخته سفید بپیوندید
               </div>
             </div>
-            <div className="flex gap-4">
+            <div className="w-full px-2 flex  gap-4 ">
               <Button
                 variant="contained"
                 size="large"
+                fullWidth
                 className="!py-[10px] !px-8"
               >
                 تست رایگان
@@ -52,6 +53,7 @@ const Mobile = () => {
               <Button
                 variant="outlined"
                 size="large"
+                fullWidth
                 className="!py-[10px] !px-8"
               >
                 خرید سرویس
@@ -59,28 +61,28 @@ const Mobile = () => {
             </div>
           </div>
           <div className="px-6">
-            <div className="bg-gray-100  flex flex-col gap-6 justify-center items-center p-4 rounded-2xl">
+            <div className="bg-gray-50  flex flex-col gap-10 justify-center items-center p-6 rounded-2xl">
               <div className="flex items-center flex-col gap-1">
-                <span className="text-2xl font-bold text-gray-600 YekanBakhFaNum">
+                <span className="text-3xl font-bold text-gray-600 YekanBakhFaNum">
                   +10
                 </span>
-                <span className="text-gray-400 text-base font-extralight">
+                <span className="text-gray-400 text-sm font-extralight">
                   رویداد برگزار شده
                 </span>
               </div>
               <div className="flex items-center flex-col gap-1">
-                <span className="text-2xl font-bold text-gray-600 YekanBakhFaNum">
+                <span className="text-3xl font-bold text-gray-600 YekanBakhFaNum">
                   +236
                 </span>
-                <span className="text-gray-400 text-base font-extralight">
+                <span className="text-gray-400 text-sm font-extralight">
                   شرکت کننده
                 </span>
               </div>
               <div className="flex items-center flex-col gap-1">
-                <span className="text-2xl font-bold text-gray-600 YekanBakhFaNum">
+                <span className="text-3xl font-bold text-gray-600 YekanBakhFaNum">
                   +20
                 </span>
-                <span className="text-gray-400 text-base font-extralight">
+                <span className="text-gray-400 text-sm font-extralight">
                   برگزار کننده
                 </span>
               </div>
@@ -177,7 +179,7 @@ const Mobile = () => {
               <img src={track} alt="" className="w-full" />
               <div className="">
                 <span className="font-medium text-lg text-gray-600">
-                  امکان چت با همکلاسی ها و اساتید
+                  امکان شخصی سازی
                 </span>
                 <ul className="flex flex-col gap-3 text-gray-400 mt-4 font-extralight text-sm">
                   <li className="check-list-bullet">
