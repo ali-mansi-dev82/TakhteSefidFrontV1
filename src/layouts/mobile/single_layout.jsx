@@ -1,5 +1,5 @@
 import { AppBar, IconButton } from "@mui/material";
-import { ChevronRightIcon } from "lucide-react";
+// import { ChevronRightIcon } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import React from "react";
 
@@ -25,7 +25,8 @@ const SingleLayoutMobile = ({
         <MainContainer className={`w-full flex justify-between gap-5 py-4`}>
           <div className="flex flex-row justify-center items-center gap-2">
             <IconButton onClick={navigate.bind(this, -1)}>
-              <ChevronRightIcon size={16} />
+              {/* <ChevronRightIcon size={16} /> */}
+              back
             </IconButton>
             <span>{title}</span>
           </div>
