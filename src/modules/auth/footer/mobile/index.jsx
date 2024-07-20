@@ -39,7 +39,7 @@ const index = () => {
             </div>
           </div>
           <div className="border-t border-gray-200 text-sm text-gray-500 text-center pt-4">
-            تمام حقوق این وبسایت متعلق به تخته سفید است.
+            تمام حقوق این وبسایت متعلق به تخته سفید است. ساخته شده توسط فاطمه منصوری حسن آبادی فرزند حسین عباس حاجی
           </div>
         </div>
       </MainContainer>
