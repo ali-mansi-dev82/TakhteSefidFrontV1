@@ -14,12 +14,12 @@ const BasicLayoutMobile = ({
     <>
       <Navbar searchText={searchText} />
       <main
-        className={` pt-[55px]${
-          filter?.length > 0 ? `mt-[122px]` : `mt-[55px]`
+        className={`pt-[65px] ${
+          filter?.length > 0 ? `mt-[122px]` : ``
         }  ${containerClass || ""}`}
       >
         {filter?.length > 0 && (
-          <div className="fixed top-[72px] right-0 left-0 flex flex-row gap-2 border-b border-gray-300 px-3 py-2 bg-white z-40">
+          <div className="fixed top-[72px] right-0 left-0 flex flex-row gap-2 border-b border-gray-300 px-4 py-2 bg-white z-40">
             {filter?.map((value, index) => (
               <span
                 key={index}

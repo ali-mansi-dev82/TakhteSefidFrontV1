@@ -19,20 +19,6 @@
   font-family: "IranYekanXRegular";
   src: url("./assets/fonts/regular/IranYekanX_regular.woff");
 }
-/*
-@font-face {
-  font-family: "IranYekanX";
-  src: url("./../public/font/YekanBakhFaNum-Regular.woff");
-}
-@font-face {
-  font-family: "Fanum";
-  src: url("./../public/font/Shabnam-FD-WOL.woff");
-}
-@font-face {
-  font-family: "IRANSans";
-  src: url("./../public/font/IranSans.woff");
-} */
-
 body {
   margin: 0;
   font-family: "IranYekanXRegular", "IRANSans", "Segoe UI", "Roboto", "Oxygen",
@@ -61,28 +47,28 @@ span.YekanBakhFaNum {
 @layer utilities {
   .check-list-bullet {
     direction: rtl;
-    @apply list-none pr-5;
+    @apply list-none pr-8;
     list-style-type: none;
     background-image: url("./assets/icons/circle-check.svg");
-    background-size: 16px 16px;
+    background-size: 24px 24px;
     background-position: 100% 50%;
     background-repeat: no-repeat;
   }
   .call-list-bullet {
     direction: rtl;
-    @apply list-none pr-5;
+    @apply list-none pr-8;
     list-style-type: none;
     background-image: url("./assets/icons/phone-call.svg");
-    background-size: 16px 16px;
+    background-size: 24px 24px;
     background-position: 100% 50%;
     background-repeat: no-repeat;
   }
   .message-list-bullet {
     direction: rtl;
-    @apply list-none pr-5;
+    @apply list-none pr-8;
     list-style-type: none;
     background-image: url("./assets/icons/message-circle-more.svg");
-    background-size: 16px 16px;
+    background-size: 24px 24px;
     background-position: 100% 50%;
     background-repeat: no-repeat;
   }

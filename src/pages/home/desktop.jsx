@@ -19,7 +19,7 @@ import chat from "../../assets/images/chat.png";
 import meet from "../../assets/images/meet.png";
 import track from "../../assets/images/track.png";
 import MainContainer from "../../components/container";
-import Footer from "../../modules/auth/footer/mobile";
+import Footer from "../../modules/auth/footer";
 
 const Desktop = () => {
   const [expanded, setExpanded] = useState();
@@ -29,18 +29,17 @@ const Desktop = () => {
   };
   return (
     <BasicLayoutDesktop container="off">
-      <div className="flex flex-col gap-12">
-        <MainContainer className="flex flex-col gap-12">
-          <div className="flex flex-row justify-around items-center ">
-            {" "}
-            <div className="flex flex-col items-start gap-4 pt-14">
-              <div className="text-gray-600 text-xl font-semibold">
+      <div className="flex flex-col gap-12 py-8">
+        <MainContainer className="flex flex-col gap-16 !px-40">
+          <div className="flex flex-row justify-between items-center ">
+            <div className="flex flex-col items-start gap-6 pt-20">
+              <div className="text-gray-600 text-3xl font-semibold">
                 سامانه مدیریت یادگیری تخته سفید
               </div>
-              <div className="text-gray-400 text-sm font-medium">
+              <div className="text-gray-400 text-lg font-medium">
                 همین حالا به تخته سفید بپیوندید
               </div>
-              <div className="flex gap-4 mt-5">
+              <div className="flex gap-4 mt-10">
                 <Button
                   variant="contained"
                   size="large"
@@ -59,56 +58,52 @@ const Desktop = () => {
             </div>
             <img src={girl} alt="girl" className="w-[400px]" />
           </div>
-          <div className="px-6">
-            <div className="bg-gray-100  flex flex-row gap-44 justify-center items-center p-5 rounded-2xl">
-              <div className="flex items-center flex-col gap-1">
-                <span className="text-2xl font-bold text-gray-600 YekanBakhFaNum">
-                  +10
-                </span>
-                <span className="text-gray-400 text-base font-extralight">
-                  رویداد برگزار شده
-                </span>
-              </div>
-              <div className="flex items-center flex-col gap-1">
-                <span className="text-2xl font-bold text-gray-600 YekanBakhFaNum">
-                  +236
-                </span>
-                <span className="text-gray-400 text-base font-extralight">
-                  شرکت کننده
-                </span>
-              </div>
-              <div className="flex items-center flex-col gap-1">
-                <span className="text-2xl font-bold text-gray-600 YekanBakhFaNum">
-                  +20
-                </span>
-                <span className="text-gray-400 text-base font-extralight">
-                  برگزار کننده
-                </span>
-              </div>
+          <div className="bg-gray-100  flex flex-row gap-44 justify-center items-center p-5 rounded-2xl">
+            <div className="flex items-center flex-col gap-2">
+              <span className="text-3xl font-bold text-gray-600 YekanBakhFaNum">
+                +10
+              </span>
+              <span className="text-gray-400 text-sm font-extralight">
+                رویداد برگزار شده
+              </span>
+            </div>
+            <div className="flex items-center flex-col gap-2">
+              <span className="text-3xl font-bold text-gray-600 YekanBakhFaNum">
+                +236
+              </span>
+              <span className="text-gray-400 text-sm font-extralight">
+                شرکت کننده
+              </span>
+            </div>
+            <div className="flex items-center flex-col gap-2">
+              <span className="text-3xl font-bold text-gray-600 YekanBakhFaNum">
+                +20
+              </span>
+              <span className="text-gray-400 text-sm font-extralight">
+                برگزار کننده
+              </span>
             </div>
           </div>
           <div className="w-full flex flex-col items-center gap-6">
             <div className="text-lg text-gray-400">
               همراهانی که به تخته سفید اعتماد کردند
             </div>
-            <div className="w-full flex justify-around">
+            <div className="w-full flex justify-between">
               <img src={co_partner1} alt="co_partner1" />
               <img src={co_partner2} alt="co_partner2" />
-              <img src={co_partner3} alt="co_partner3" />
               <img src={co_partner4} alt="co_partner4" />
               <img src={co_partner1} alt="co_partner1" />
-              <img src={co_partner2} alt="co_partner2" />
               <img src={co_partner3} alt="co_partner3" />
               <img src={co_partner4} alt="co_partner4" />
             </div>
           </div>
-          <div className="w-full flex flex-col gap-12">
+          <div className="w-full flex flex-col gap-20">
             <div className="w-full flex flex-row gap-20 items-center justify-center">
               <div className="">
-                <span className="font-medium text-lg text-gray-600">
+                <span className="font-bold text-2xl text-gray-600">
                   امکان برگزاری آزمون آنلاین
                 </span>
-                <ul className="flex flex-col gap-3 text-gray-400 mt-4 font-extralight text-sm">
+                <ul className="flex flex-col gap-3 text-gray-400 mt-8 font-extralight text-base">
                   <li className="check-list-bullet">
                     امکان ارسال پیام های چند رسانه
                   </li>
@@ -121,10 +116,10 @@ const Desktop = () => {
             <div className="w-full flex flex-row gap-20 items-center justify-center">
               <img src={online_class} alt="" className="w-[500px]" />
               <div className="">
-                <span className="font-medium text-lg text-gray-600">
+                <span className="font-bold text-2xl text-gray-600">
                   کلاس های آنلاین و حضور و غیاب
                 </span>
-                <ul className="flex flex-col gap-3 text-gray-400 mt-4 font-extralight text-sm">
+                <ul className="flex flex-col gap-3 text-gray-400 mt-8 font-extralight text-base">
                   <li className="check-list-bullet">
                     امکان ارسال پیام های چند رسانه
                   </li>
@@ -135,10 +130,10 @@ const Desktop = () => {
             </div>
             <div className="w-full flex flex-row gap-20 items-center justify-center">
               <div className="">
-                <span className="font-medium text-lg text-gray-600">
+                <span className="font-bold text-2xl text-gray-600">
                   بارگذاری تکالیف و ثبت نمرات
                 </span>
-                <ul className="flex flex-col gap-3 text-gray-400 mt-4 font-extralight text-sm">
+                <ul className="flex flex-col gap-3 text-gray-400 mt-8 font-extralight text-base">
                   <li className="check-list-bullet">
                     امکان ارسال پیام های چند رسانه
                   </li>
@@ -151,10 +146,10 @@ const Desktop = () => {
             <div className="w-full flex flex-row gap-20 items-center justify-center">
               <img src={chat} alt="" className="w-[500px]" />
               <div className="">
-                <span className="font-medium text-lg text-gray-600">
+                <span className="font-bold text-2xl text-gray-600">
                   امکان چت با همکلاسی ها و اساتید
                 </span>
-                <ul className="flex flex-col gap-3 text-gray-400 mt-4 font-extralight text-sm">
+                <ul className="flex flex-col gap-3 text-gray-400 mt-8 font-extralight text-base">
                   <li className="check-list-bullet">
                     امکان ارسال پیام های چند رسانه
                   </li>
@@ -165,10 +160,10 @@ const Desktop = () => {
             </div>
             <div className="w-full flex flex-row gap-20 items-center justify-center">
               <div className="">
-                <span className="font-medium text-lg text-gray-600">
+                <span className="font-bold text-2xl text-gray-600">
                   امکان برگزاری جلسات آنلاین
                 </span>
-                <ul className="flex flex-col gap-3 text-gray-400 mt-4 font-extralight text-sm">
+                <ul className="flex flex-col gap-3 text-gray-400 mt-8 font-extralight text-base">
                   <li className="check-list-bullet">
                     امکان ارسال پیام های چند رسانه
                   </li>
@@ -181,20 +176,18 @@ const Desktop = () => {
             <div className="w-full flex flex-row gap-20 items-center justify-center">
               <img src={track} alt="" className="w-[500px]" />
               <div className="">
-                <span className="font-medium text-lg text-gray-600">
-                  امکان چت با همکلاسی ها و اساتید
+                <span className="font-bold text-2xl text-gray-600">
+                  امکان شخصی سازی
                 </span>
-                <ul className="flex flex-col gap-3 text-gray-400 mt-4 font-extralight text-sm">
-                  <li className="check-list-bullet">
-                    امکان ارسال پیام های چند رسانه
-                  </li>
-                  <li className="check-list-bullet">چت های گروهی</li>
-                  <li className="check-list-bullet">امکان ارسال عکس و فایل</li>
+                <ul className="flex flex-col gap-3 text-gray-400 mt-8 font-extralight text-base">
+                  <li className="check-list-bullet">دامین اختصاصی</li>
+                  <li className="check-list-bullet">سرور اختصاصی </li>
+                  <li className="check-list-bullet">رنگ و لوگوی اختصاصی</li>
                 </ul>
               </div>
             </div>
           </div>
-          <div className="px-36">
+          <div className="">
             <Accordion
               expanded={expanded === "panel1"}
               onChange={handleChange("panel1")}
@@ -265,7 +258,7 @@ const Desktop = () => {
             </Button>
           </div>
           <div className="">
-            <div className="flex flex-row items-center justify-between gap-3 bg-primary-0 py-8 px-20 mx-36 rounded-xl">
+            <div className="flex flex-row items-center justify-between gap-3 bg-primary-0 py-8 px-20 rounded-xl">
               <div className="flex flex-col gap-3">
                 <div className="text-lg text-primary-90 font-bold">
                   سامانه مدیریت یادگیری تخته سفید
