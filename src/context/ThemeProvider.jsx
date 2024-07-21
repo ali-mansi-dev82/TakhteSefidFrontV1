@@ -12,7 +12,7 @@ const cacheRtl = createCache({
 
 const theme = createTheme({
   direction: "rtl",
-  typography: { fontFamily: "IranYekanX" },
+  typography: { fontFamily: "YekanBakhFaNum" },
   palette: {
     mode: "light",
     primary: {
@@ -45,7 +45,10 @@ const theme = createTheme({
     },
     MuiTextField: {
       styleOverrides: {
-        root: { outline: { borderRadius: "18px" } },
+        root: {
+          fontFamily: "YekanBakhFaNum",
+          outline: { borderRadius: "18px" },
+        },
       },
     },
     MuiMenu: { styleOverrides: {} },
@@ -69,7 +72,6 @@ const theme = createTheme({
     MuiButton: {
       defaultProps: {
         sx: {
-          paddingY: "6px",
           borderRadius: "8px",
           boxShadow: "none",
         },
@@ -82,6 +84,9 @@ const theme = createTheme({
           borderColor: "#E5E7EB",
           color: "#111928",
         },
+        // sizeLarge: { paddingY: "12px" },
+        // sizeMedium: { paddingY: "10px" },
+        // sizeSmall: { paddingY: "6px" },
       },
     },
     MuiAccordionSummary: {

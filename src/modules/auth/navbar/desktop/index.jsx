@@ -4,6 +4,7 @@ import { ReactComponent as Logo } from "../../../../assets/Logo.svg";
 import MainContainer from "../../../../components/container";
 import { Button } from "@mui/material";
 import Dropdown from "./dropdown";
+import Index from "../../modal";
 
 const index = () => {
   return (
@@ -26,6 +27,7 @@ const index = () => {
           </Button>
         </div>
       </MainContainer>
+      <Index />
     </div>
   );
 };
