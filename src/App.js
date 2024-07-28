@@ -1,13 +1,24 @@
 import { Routes, Route } from "react-router-dom";
-import React from "react";
+import React, { useEffect } from "react";
+import { bindActionCreators } from "@reduxjs/toolkit";
+import { connect } from "react-redux";
 
 import Index from "./pages/home";
 import Login from "./pages/login";
 import Register from "./pages/register";
 import useResponsive from "./hooks/useResponsive";
+import { useGetUserDetailsQuery } from "./services/authService";
+import { log_in } from "./features/auth/authSlice";
 
-const App = () => {
+const App = ({ log_in }) => {
   const [isMobile] = useResponsive();
+
+  const data = useGetUserDetailsQuery();
+  useEffect(() => {
+    if (data?.data) {
+      log_in({ userInfo: data?.data });
+    }
+  }, [data, log_in]);
 
   return (
     <Routes>
@@ -18,4 +29,7 @@ const App = () => {
   );
 };
 
-export default App;
+const mapDispatchToProps = (dispatch) =>
+  bindActionCreators({ log_in }, dispatch);
+
+export default connect(null, mapDispatchToProps)(App);
