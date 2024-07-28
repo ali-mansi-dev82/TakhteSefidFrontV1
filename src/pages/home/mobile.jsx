@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   Accordion,
   AccordionDetails,
@@ -20,15 +20,9 @@ import meet from "../../assets/images/meet.png";
 import track from "../../assets/images/track.png";
 import MainContainer from "../../components/container";
 import Footer from "../../modules/auth/footer";
-import { useSelector } from "react-redux";
 
 const Mobile = () => {
   const [expanded, setExpanded] = useState();
-  const info = useSelector((state) => state.auth);
-
-  useEffect(() => {
-    console.log(info);
-  }, [info]);
 
   const handleChange = (panel) => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
