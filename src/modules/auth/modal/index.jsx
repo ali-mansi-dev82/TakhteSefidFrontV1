@@ -1,13 +1,23 @@
 import { Dialog, DialogTitle, IconButton } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 
 import useResponsive from "../../../hooks/useResponsive";
-import SendOtp from "./otp_auth/send_otp";
+import SendOtp from "./send_otp";
+import CheckOtp from "./check_otp";
 import { ReactComponent as X } from "../../../assets/icons/x.svg";
+import { useNavigate } from "react-router-dom";
 
 const Index = ({ open, onClose }) => {
+  const [isSendOtpLevel, setIsSendOtpLevel] = useState(true);
   const [isMobile] = useResponsive();
+  const [mobile, setMobile] = useState("");
+  const [expireCode, setExpireCode] = useState(0);
+  const navigate = useNavigate();
 
+  const handleClose = () => {
+    if (onClose) return onClose();
+    navigate(`/s/`);
+  };
   return (
     <Dialog
       fullScreen={isMobile}
@@ -26,7 +36,19 @@ const Index = ({ open, onClose }) => {
           <X size={16} />
         </IconButton>
       </DialogTitle>
-      <SendOtp />
+      {isSendOtpLevel ? (
+        <SendOtp
+          nextLevel={setIsSendOtpLevel.bind(this, false)}
+          setMobile={setMobile}
+          setExpireCode={setExpireCode}
+        />
+      ) : (
+        <CheckOtp
+          onClose={handleClose}
+          mobile={mobile}
+          expireCode={expireCode}
+        />
+      )}
     </Dialog>
   );
 };
