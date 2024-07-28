@@ -6,10 +6,12 @@ import MainContainer from "../../../../components/container";
 import Dropdown from "./dropdown";
 import Modal from "../../modal";
 import useDisclosure from "../../../../hooks/useDisclosure";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const Index = () => {
   const [isModalOpen, openModal, closeModal] = useDisclosure(false);
-
+  const { isAuthed } = useSelector((state) => state.auth);
   return (
     <div className="flex flex-row justify-center bg-white items-center border-b border-gray-200 h-[65px] fixed top-0 left-0 right-0 z-50">
       <MainContainer className="flex justify-between items-center h-[65px]">
@@ -22,12 +24,19 @@ const Index = () => {
             <li className="cursor-pointer">درباره ما</li>
           </ul>
         </div>
-
-        <Button size="medium" variant="contained" onClick={openModal}>
-          ورود به حساب کاربری
-        </Button>
+        {isAuthed ? (
+          <Link to={`/dashboard`}>
+            <Button size="medium" variant="contained">
+              ورود به حساب کاربری
+            </Button>
+          </Link>
+        ) : (
+          <Button size="medium" variant="contained" onClick={openModal}>
+            ورود به حساب کاربری
+          </Button>
+        )}
       </MainContainer>
-      <Modal open={isModalOpen} onClose={closeModal} />
+      {!isAuthed && <Modal open={isModalOpen} onClose={closeModal} />}
     </div>
   );
 };
