@@ -1,12 +1,15 @@
 import React from "react";
+import { Button } from "@mui/material";
 
 import { ReactComponent as Logo } from "../../../../assets/Logo.svg";
 import MainContainer from "../../../../components/container";
-import { Button } from "@mui/material";
 import Dropdown from "./dropdown";
-import Index from "../../modal";
+import Modal from "../../modal";
+import useDisclosure from "../../../../hooks/useDisclosure";
 
-const index = () => {
+const Index = () => {
+  const [isModalOpen, openModal, closeModal] = useDisclosure(false);
+
   return (
     <div className="flex flex-row justify-center bg-white items-center border-b border-gray-200 h-[65px] fixed top-0 left-0 right-0 z-50">
       <MainContainer className="flex justify-between items-center h-[65px]">
@@ -20,16 +23,13 @@ const index = () => {
           </ul>
         </div>
 
-        <div className="flex gap-2">
-          <Button size="medium">ورود</Button>
-          <Button size="medium" variant="contained">
-            ثبت نام
-          </Button>
-        </div>
+        <Button size="medium" variant="contained" onClick={openModal}>
+          ورود به حساب کاربری
+        </Button>
       </MainContainer>
-      <Index />
+      <Modal open={isModalOpen} onClose={closeModal} />
     </div>
   );
 };
 
-export default index;
+export default Index;

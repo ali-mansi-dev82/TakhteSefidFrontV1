@@ -1,10 +1,10 @@
 import { AppBar, IconButton } from "@mui/material";
-// import { ChevronRightIcon } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import React from "react";
 
-import ButtonNavigation from "../../modules/auth/components/button_navigation/button_navigaton";
+// import ButtonNavigation from "../../modules/auth/components/button_navigation/button_navigaton";
 import MainContainer from "../../components/container";
+import { ReactComponent as Chevron } from "../../assets/icons/chevron-down.svg";
 
 const SingleLayoutMobile = ({
   children,
@@ -12,21 +12,22 @@ const SingleLayoutMobile = ({
   navbarActions,
   buttonNavigation,
   container,
-  buttonNavigationSelected,
+  // buttonNavigationSelected,
 }) => {
   let navigate = useNavigate();
 
   return (
     <>
       <AppBar
-        className="!bg-white !shadow-md h-[65px] justify-center"
+        className="!bg-white !shadow-none border-b-2 border-gray-200 h-[65px] justify-center"
         position="fixed"
       >
         <MainContainer className={`w-full flex justify-between gap-5 py-4`}>
           <div className="flex flex-row justify-center items-center gap-2">
             <IconButton onClick={navigate.bind(this, -1)}>
-              {/* <ChevronRightIcon size={16} /> */}
-              back
+              <span className="-rotate-90">
+                <Chevron />
+              </span>
             </IconButton>
             <span>{title}</span>
           </div>
@@ -44,12 +45,12 @@ const SingleLayoutMobile = ({
           </MainContainer>
         )}
       </main>
-      {buttonNavigation !== "off" && (
+      {/* {buttonNavigation !== "off" && (
         <ButtonNavigation
           buttonNavigation={buttonNavigation}
           selected={buttonNavigationSelected}
         />
-      )}
+      )} */}
     </>
   );
 };

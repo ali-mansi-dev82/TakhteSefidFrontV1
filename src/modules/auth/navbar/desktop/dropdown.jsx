@@ -1,4 +1,5 @@
 import React from "react";
+
 import { ReactComponent as Chevron } from "../../../../assets/icons/chevron-down.svg";
 
 const Dropdown = () => {
@@ -9,14 +10,14 @@ const Dropdown = () => {
         <Chevron />
       </span>
 
-      <ul className="absolute invisible group-hover:visible top-5 bg-white w-max border border-gray-200 rounded-lg mt-8 overflow-hidden">
-        <li className="hover:bg-primary-10 hover:text-primary-80 text-sm px-4 py-3">
+      <ul className="absolute invisible group-hover:visible top-5 bg-white w-max border border-gray-200 rounded-lg mt-8 overflow-hidden delay-300">
+        <li className="hover:bg-primary-0 hover:text-primary-80 text-sm px-4 py-3">
           برگزاری کلاس آنلاین
         </li>
-        <li className="hover:bg-primary-10 hover:text-primary-80 text-sm px-4 py-3">
+        <li className="hover:bg-primary-0 hover:text-primary-80 text-sm px-4 py-3">
           برگزاری وبینار
         </li>
-        <li className="hover:bg-primary-10 hover:text-primary-80 text-sm px-4 py-3">
+        <li className="hover:bg-primary-0 hover:text-primary-80 text-sm px-4 py-3">
           برگزاری جلسه آنلاین (وب کنفرانس)
         </li>
       </ul>

@@ -22,7 +22,7 @@ const MobileDrawer = () => {
         <Hamberger />
       </span>
       <Drawer open={open} onClose={toggleDrawer(false)}>
-        <section className="px-4 py-5 min-w-[80vw]">
+        <section className="px-4 py-5 min-w-[80vw] select-none">
           <div className="w-full inline-flex justify-between items-center">
             <Logo />
             <X onClick={toggleDrawer(false)} />
@@ -47,19 +47,21 @@ const MobileDrawer = () => {
           </div>
           <ul className="flex flex-col gap-2 text-sm text-gray-700 mt-10 group">
             <li className="py-3 w-full" onClick={toggleDrop(!dropOpen)}>
-              <div className="w-full inline-flex justify-between">
+              <div className="w-full inline-flex items-center justify-between">
                 <span className="">خدمات</span>
-                <Chevrow />
+                <span className={`duration-100	${dropOpen && `rotate-180`}`}>
+                  <Chevrow />
+                </span>
               </div>
               {dropOpen && (
-                <ul className="text-gray-500">
-                  <li className="hover:bg-primary-10 hover:text-primary-80 text-sm px-4 py-3">
-                    برگزاری کلاس آنلاین
-                  </li>
-                  <li className="hover:bg-primary-10 hover:text-primary-80 text-sm px-4 py-3">
-                    برگزاری وبینار
-                  </li>
-                  <li className="hover:bg-primary-10 hover:text-primary-80 text-sm px-4 py-3">
+                <ul
+                  className={`text-gray-500 pt-4 delay-700 duration-700 overflow-hidden ease-in h-0 ${
+                    dropOpen && "h-auto"
+                  }`}
+                >
+                  <li className="text-xs px-4 py-3">برگزاری کلاس آنلاین</li>
+                  <li className="text-xs px-4 py-3">برگزاری وبینار</li>
+                  <li className="text-xs px-4 py-3">
                     برگزاری جلسه آنلاین (وب کنفرانس)
                   </li>
                 </ul>

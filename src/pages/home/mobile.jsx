@@ -41,7 +41,7 @@ const Mobile = () => {
                 همین حالا به تخته سفید بپیوندید
               </div>
             </div>
-            <div className="w-full px-2 flex  gap-4 ">
+            <div className="w-full flex gap-4">
               <Button
                 variant="contained"
                 size="large"

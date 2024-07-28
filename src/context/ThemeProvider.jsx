@@ -74,6 +74,9 @@ const theme = createTheme({
         sx: {
           borderRadius: "8px",
           boxShadow: "none",
+          ":hover": {
+            boxShadow: "none",
+          },
         },
       },
       styleOverrides: {
@@ -84,9 +87,9 @@ const theme = createTheme({
           borderColor: "#E5E7EB",
           color: "#111928",
         },
-        // sizeLarge: { paddingY: "12px" },
-        // sizeMedium: { paddingY: "10px" },
-        // sizeSmall: { paddingY: "6px" },
+        sizeLarge: { padding: "0.75rem" },
+        sizeMedium: { padding: "0.4rem 1rem" },
+        sizeSmall: { padding: "0.2rem" },
       },
     },
     MuiAccordionSummary: {
