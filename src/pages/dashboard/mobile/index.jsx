@@ -66,7 +66,7 @@ const Mobile = () => {
                   }`}
                 >
                   {item.num}
-                  <span className="w-[5px] h-[5px] bg-yellow-700 rounded"></span>
+                  <span className="w-[5px] h-[5px] bg-yellow-400 rounded"></span>
                 </span>
               </div>
             ))}
