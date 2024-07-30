@@ -7,6 +7,7 @@ import Index from "./pages/home";
 import Login from "./pages/login";
 import Register from "./pages/register";
 import Dashboard from "./pages/dashboard";
+import MyLearning from "./pages/my_learning";
 import useResponsive from "./hooks/useResponsive";
 import { useGetUserDetailsQuery } from "./services/authService";
 import { log_in } from "./features/auth/authSlice";
@@ -30,6 +31,10 @@ const App = ({ log_in }) => {
       <Route
         path="/dashboard"
         element={<AuthGuard component={<Dashboard isMobile={isMobile} />} />}
+      />
+      <Route
+        path="/my-learning"
+        element={<AuthGuard component={<MyLearning isMobile={isMobile} />} />}
       />
     </Routes>
   );
