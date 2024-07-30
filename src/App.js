@@ -4,10 +4,12 @@ import { bindActionCreators } from "@reduxjs/toolkit";
 import { connect } from "react-redux";
 
 import Index from "./pages/home";
-import Login from "./pages/login";
 import Register from "./pages/register";
+import Login from "./pages/login";
 import Dashboard from "./pages/dashboard";
 import MyLearning from "./pages/my_learning";
+import Calendar from "./pages/calendar";
+
 import useResponsive from "./hooks/useResponsive";
 import { useGetUserDetailsQuery } from "./services/authService";
 import { log_in } from "./features/auth/authSlice";
@@ -35,6 +37,10 @@ const App = ({ log_in }) => {
       <Route
         path="/my-learning"
         element={<AuthGuard component={<MyLearning isMobile={isMobile} />} />}
+      />
+      <Route
+        path="/calendar"
+        element={<AuthGuard component={<Calendar isMobile={isMobile} />} />}
       />
     </Routes>
   );

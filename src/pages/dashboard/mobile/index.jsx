@@ -34,6 +34,24 @@ const activities = [
     date: "14 فروردین 1403",
     time: "14:30",
   },
+  {
+    type: "file",
+    title: "طراحی گرافیک",
+    date: "14 فروردین 1403",
+    time: "14:30",
+  },
+  {
+    type: "blog",
+    title: "طراحی گرافیک",
+    date: "14 فروردین 1403",
+    time: "14:30",
+  },
+  {
+    type: "video",
+    title: "طراحی گرافیک",
+    date: "14 فروردین 1403",
+    time: "14:30",
+  },
 ];
 
 const Mobile = () => {
