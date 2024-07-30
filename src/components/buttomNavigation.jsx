@@ -33,7 +33,7 @@ const ButtomNavigation = () => {
           </span>
           <span
             className={`text-gray-400 text-xs ${
-              item.active && `text-primary-60`
+              location.pathname === item.link && `text-primary-60 font-bold`
             }`}
           >
             {item.title}
