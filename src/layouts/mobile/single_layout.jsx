@@ -52,7 +52,9 @@ const SingleLayoutMobile = ({
         className="!bg-white !shadow-none border-b border-gray-300 h-[65px] justify-center"
         position="fixed"
       >
-        <MainContainer className={`flex flex-row justify-start gap-2 items-center`}>
+        <MainContainer
+          className={`flex flex-row justify-start gap-2 items-center`}
+        >
           <IconButton onClick={navigate.bind(this, -1)}>
             <span className="-rotate-90">
               <Chevron />
@@ -62,11 +64,15 @@ const SingleLayoutMobile = ({
         </MainContainer>
       </AppBar>
       <main className={`mt-[65px] h-[calc(100vh-135px)] overflow-y-auto`}>
-        <MainContainer
-          className={`w-full flex flex-col justify-center gap-8 py-8`}
-        >
-          {children}
-        </MainContainer>
+        {container === "off" ? (
+          children
+        ) : (
+          <MainContainer
+            className={`w-full flex flex-col justify-center gap-8 py-8`}
+          >
+            {children}
+          </MainContainer>
+        )}
       </main>
       <ButtomNavigation />
     </>
