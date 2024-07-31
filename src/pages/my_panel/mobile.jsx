@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 
 import { ReactComponent as Chevrow } from "../../assets/icons/chevron-down.svg";
@@ -12,13 +12,9 @@ import InitialLayoutMobile from "../../layouts/mobile/single_layout";
 
 const Mobile = () => {
   const { userInfo } = useSelector((redux) => redux.auth);
-  useEffect(() => {
-    console.log(userInfo);
-  }, [userInfo]);
   return (
     <InitialLayoutMobile title="پنل من">
       <ul className="flex flex-col gap-2">
-        {/* border-b border-gray-300 */}
         <li className="w-full inline-flex justify-between py-4">
           <div className="inline-flex gap-2">
             <span className="inline-flex w-10 h-w-10 p-2 bg-gray-100 rounded-full">
