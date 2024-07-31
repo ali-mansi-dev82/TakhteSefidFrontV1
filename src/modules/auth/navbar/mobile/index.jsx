@@ -21,7 +21,7 @@ const Index = () => {
         {isAuthed ? (
           <Link to={`/dashboard`}>
             <Button size="medium" variant="contained">
-              ورود
+              پنل
             </Button>
           </Link>
         ) : (
