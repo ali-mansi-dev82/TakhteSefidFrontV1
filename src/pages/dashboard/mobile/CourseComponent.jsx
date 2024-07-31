@@ -1,13 +1,14 @@
 import { Avatar, AvatarGroup, LinearProgress } from "@mui/material";
+import { Link } from "react-router-dom";
 import React from "react";
 
-import image from "../../../assets/images/track.png";
-import avatar from "../../../assets/images/avatar.jpg";
 import { ReactComponent as User } from "../../../assets/icons/user.svg";
+import avatar from "../../../assets/images/avatar.jpg";
+import image from "../../../assets/images/track.png";
 
 const CourseComponent = () => {
   return (
-    <div className="border border-gray-200 rounded-lg">
+    <Link to={`/course/callld`} className="border border-gray-200 rounded-lg">
       <div className="flex flex-row gap-4 p-4 h-max">
         <img
           src={image}
@@ -62,7 +63,7 @@ const CourseComponent = () => {
           sx={{ height: 10, borderRadius: 10 }}
         />
       </div>
-    </div>
+    </Link>
   );
 };
 

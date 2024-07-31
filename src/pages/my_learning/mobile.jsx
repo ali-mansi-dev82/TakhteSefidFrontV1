@@ -1,10 +1,10 @@
-import React from "react";
 import { Button, InputAdornment, TextField } from "@mui/material";
+import React from "react";
 
-import InitialLayoutMobile from "../../layouts/mobile/single_layout";
-import CourseComponent from "../dashboard/mobile/CourseComponent";
 import { ReactComponent as Settings } from "../../assets/icons/settings-2.svg";
 import { ReactComponent as Search } from "../../assets/icons/search.svg";
+import InitialLayoutMobile from "../../layouts/mobile/single_layout";
+import CourseComponent from "../dashboard/mobile/CourseComponent";
 
 const Mobile = () => {
   return (
