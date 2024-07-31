@@ -13,6 +13,7 @@ import Register from "./pages/register";
 import Calendar from "./pages/calendar";
 import MyPanel from "./pages/my_panel";
 import Course from "./pages/course";
+import CreateCourse from "./pages/create_course";
 import Login from "./pages/login";
 import Index from "./pages/home";
 
@@ -32,6 +33,7 @@ const App = ({ log_in }) => {
       <Route path="/login" element={<Login isMobile={isMobile} />} />
       <Route path="/register" element={<Register isMobile={isMobile} />} />
       <Route path="/course/:id" element={<Course isMobile={isMobile} />} />
+      <Route path="/create_course" element={<CreateCourse isMobile={isMobile} />} />
 
       <Route
         path="/dashboard"
