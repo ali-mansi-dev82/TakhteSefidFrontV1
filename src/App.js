@@ -15,6 +15,7 @@ import MyPanel from "./pages/my_panel";
 import Course from "./pages/course";
 import CreateCourse from "./pages/create_course";
 import EditCourse from "./pages/edit_course";
+import ManageCourse from "./pages/manage_course";
 import Login from "./pages/login";
 import Index from "./pages/home";
 
@@ -34,8 +35,18 @@ const App = ({ log_in }) => {
       <Route path="/login" element={<Login isMobile={isMobile} />} />
       <Route path="/register" element={<Register isMobile={isMobile} />} />
       <Route path="/course/:id" element={<Course isMobile={isMobile} />} />
-      <Route path="/create_course" element={<CreateCourse isMobile={isMobile} />} />
-      <Route path="/edit_course" element={<EditCourse isMobile={isMobile} />} />
+      <Route
+        path="/create_course"
+        element={<CreateCourse isMobile={isMobile} />}
+      />
+      <Route
+        path="/edit_course/:id"
+        element={<EditCourse isMobile={isMobile} />}
+      />
+      <Route
+        path="/manage_course/:id"
+        element={<ManageCourse isMobile={isMobile} />}
+      />
 
       <Route
         path="/dashboard"
