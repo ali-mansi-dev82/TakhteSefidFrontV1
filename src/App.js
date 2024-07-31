@@ -9,6 +9,7 @@ import Login from "./pages/login";
 import Dashboard from "./pages/dashboard";
 import MyLearning from "./pages/my_learning";
 import Calendar from "./pages/calendar";
+import MyPanel from "./pages/my_panel";
 
 import useResponsive from "./hooks/useResponsive";
 import { useGetUserDetailsQuery } from "./services/authService";
@@ -41,6 +42,10 @@ const App = ({ log_in }) => {
       <Route
         path="/calendar"
         element={<AuthGuard component={<Calendar isMobile={isMobile} />} />}
+      />
+      <Route
+        path="/my-panel"
+        element={<AuthGuard component={<MyPanel isMobile={isMobile} />} />}
       />
     </Routes>
   );
