@@ -81,7 +81,7 @@ const UploadImages = ({ images, setImages, uploadImageFn: noname }) => {
         >
           <span
             htmlFor="photo-dropbox"
-            className="flex items-center space-x-2 text-[#2F80C0]"
+            className="flex items-center space-x-2 text-primary-60 p-3"
           >
             <ImageUp />
           </span>
