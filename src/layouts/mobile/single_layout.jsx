@@ -11,8 +11,8 @@ const SingleLayoutMobile = ({
   title = "",
   navbarActions,
   buttonNavigation,
+  inerrButtonNavigation = null,
   container,
-  // buttonNavigationSelected,
 }) => {
   let navigate = useNavigate();
 
@@ -74,7 +74,7 @@ const SingleLayoutMobile = ({
           </MainContainer>
         )}
       </main>
-      <ButtomNavigation />
+      <ButtomNavigation inerrButtonNavigation={inerrButtonNavigation} />
     </>
   );
 };
