@@ -1,12 +1,6 @@
 import React from "react";
 import {
   Button,
-  FormControlLabel,
-  FormGroup,
-  MenuItem,
-  Pagination,
-  Select,
-  Switch,
   Tab,
   Tabs,
 } from "@mui/material";
@@ -15,9 +9,11 @@ import InitialLayoutMobile from "../../../layouts/mobile/single_layout";
 import MainContainer from "../../../components/container";
 import image from "../../../assets/image 1.png";
 import { ReactComponent as PenLine } from "../../../assets/icons/pen-line.svg";
-import { ReactComponent as Search } from "../../../assets/icons/search.svg";
+
 import AvatarGroupWithImage from "../../../components/avatar_group";
-import MemberTable from "../components/member_table";
+
+import SettingTab from "./tabs/setting_tab";
+import MemberTab from "./tabs/member_tab";
 
 const Mobile = () => {
   const [value, setValue] = React.useState(0);
@@ -62,51 +58,8 @@ const Mobile = () => {
             </Tabs>
           </div>
 
-          {value === 0 && (
-            <div className="flex flex-col gap-4">
-              <div className="inline-flex gap-3">
-                <Button variant="contained">ثبت نام کاربر جدید</Button>
-                <Button variant="outlined">ثبت نام گروهی</Button>
-              </div>
-              <label
-                className="inline-flex items-center border border-gray-200 relative bg-gray-100 rounded-lg"
-                htmlFor="search"
-              >
-                <span className="absolute right-3">
-                  <Search />
-                </span>
-                <input
-                  type="text"
-                  id="search"
-                  placeholder="جستجو در نام ها"
-                  className="w-full outline-none pr-10 bg-gray-100"
-                />
-                <Select
-                  labelId="demo-simple-select-label"
-                  id="demo-simple-select"
-                  value={10}
-                  sx={{ border: 0 }}
-                  className="!border-0 !outline-none"
-                  variant="outlined"
-                  // onChange={handleChange}
-                >
-                  <MenuItem value={10}>Ten</MenuItem>
-                  <MenuItem value={20}>Twenty</MenuItem>
-                  <MenuItem value={30}>Thirty</MenuItem>
-                </Select>
-              </label>
-              <MemberTable />
-              <Pagination count={10} variant="outlined" color="primary" />
-            </div>
-          )}
-          {value === 1 && (
-            <FormGroup>
-              <FormControlLabel
-                control={<Switch defaultChecked />}
-                label="فعال بودن دوره"
-              />
-            </FormGroup>
-          )}
+          {value === 0 && <MemberTab />}
+          {value === 1 && <SettingTab />}
         </div>
       </MainContainer>
     </InitialLayoutMobile>

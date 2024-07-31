@@ -15,6 +15,7 @@ import MyPanel from "./pages/my_panel";
 import Course from "./pages/course";
 import CreateCourse from "./pages/create_course";
 import EditCourse from "./pages/edit_course";
+import GlobalManagement from "./pages/global_management";
 import ManageCourse from "./pages/manage_course";
 import Login from "./pages/login";
 import Index from "./pages/home";
@@ -35,19 +36,19 @@ const App = ({ log_in }) => {
       <Route path="/login" element={<Login isMobile={isMobile} />} />
       <Route path="/register" element={<Register isMobile={isMobile} />} />
       <Route path="/course/:id" element={<Course isMobile={isMobile} />} />
+
       <Route
         path="/create_course"
-        element={<CreateCourse isMobile={isMobile} />}
+        element={<AuthGuard component={<CreateCourse isMobile={isMobile} />} />}
       />
       <Route
         path="/edit_course/:id"
-        element={<EditCourse isMobile={isMobile} />}
+        element={<AuthGuard component={<EditCourse isMobile={isMobile} />} />}
       />
       <Route
         path="/manage_course/:id"
-        element={<ManageCourse isMobile={isMobile} />}
+        element={<AuthGuard component={<ManageCourse isMobile={isMobile} />} />}
       />
-
       <Route
         path="/dashboard"
         element={<AuthGuard component={<Dashboard isMobile={isMobile} />} />}
@@ -63,6 +64,10 @@ const App = ({ log_in }) => {
       <Route
         path="/my-panel"
         element={<AuthGuard component={<MyPanel isMobile={isMobile} />} />}
+      />
+      <Route
+        path="/global_management"
+        element={<AuthGuard component={<GlobalManagement isMobile={isMobile} />} />}
       />
     </Routes>
   );
