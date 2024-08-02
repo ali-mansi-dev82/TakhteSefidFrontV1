@@ -1,12 +1,14 @@
 import React from "react";
+
+import { ReactComponent as NotebookText } from "../../../assets/icons/notebook-text.svg";
 import { ReactComponent as Presentation } from "../../../assets/icons/presentation.svg";
 import { ReactComponent as NotebookPen } from "../../../assets/icons/notebook-pen.svg";
 import { ReactComponent as Check } from "../../../assets/icons/square-check-big.svg";
-import { ReactComponent as File } from "../../../assets/icons/file.svg";
-import { ReactComponent as NotebookText } from "../../../assets/icons/notebook-text.svg";
 import { ReactComponent as SquarePlay } from "../../../assets/icons/square-play.svg";
+import { ReactComponent as File } from "../../../assets/icons/file.svg";
+import { dateFormate } from "../../../utils/dateFormat";
 
-const ActivityComponent = ({ title, type, date, time }) => {
+const ActivityComponent = ({ title, type, start }) => {
   const getColor = () => {
     switch (type) {
       case "exam":
@@ -16,7 +18,7 @@ const ActivityComponent = ({ title, type, date, time }) => {
           btnBgColor: "bg-yellow-200",
           textPrimaryColor: "text-yellow-700",
           textSecondaryColor: "text-yellow-600",
-          ctaText: "شروع آزمون",
+          ctaText: "شروع",
         };
       case "practice":
         return {
@@ -25,7 +27,7 @@ const ActivityComponent = ({ title, type, date, time }) => {
           btnBgColor: "bg-blue-200",
           textPrimaryColor: "text-blue-700",
           textSecondaryColor: "text-blue-600",
-          ctaText: "ارسال تمرین",
+          ctaText: "ارسال",
         };
       case "blog":
         return {
@@ -34,7 +36,7 @@ const ActivityComponent = ({ title, type, date, time }) => {
           btnBgColor: "bg-gray-200",
           textPrimaryColor: "text-gray-700",
           textSecondaryColor: "text-gray-600",
-          ctaText: "خوندن مقاله",
+          ctaText: "خوندن",
         };
       case "video":
         return {
@@ -43,7 +45,7 @@ const ActivityComponent = ({ title, type, date, time }) => {
           btnBgColor: "bg-teal-200",
           textPrimaryColor: "text-teal-700",
           textSecondaryColor: "text-teal-600",
-          ctaText: "دیدن ویدیو",
+          ctaText: "دیدن",
         };
       case "class":
         return {
@@ -52,7 +54,7 @@ const ActivityComponent = ({ title, type, date, time }) => {
           btnBgColor: "bg-green-200",
           textPrimaryColor: "text-green-700",
           textSecondaryColor: "text-green-600",
-          ctaText: "پیوستن کلاس",
+          ctaText: "پیوستن",
         };
       case "file":
         return {
@@ -61,7 +63,7 @@ const ActivityComponent = ({ title, type, date, time }) => {
           btnBgColor: "bg-red-200",
           textPrimaryColor: "text-red-700",
           textSecondaryColor: "text-red-600",
-          ctaText: "دانلود فایل",
+          ctaText: "دانلود",
         };
       default:
         return {
@@ -77,30 +79,30 @@ const ActivityComponent = ({ title, type, date, time }) => {
 
   return (
     <div
-      className={`flex justify-between items-cente ${props.bgColor} px-3 py-3 rounded-lg`}
+      className={`flex justify-between items-cente ${props.bgColor} gap-5 px-3 py-3 rounded-lg`}
     >
-      <div className="flex flex-row gap-3 items-center">
+      <div className="flex flex-row gap-3 items-center w-full">
         <span
-          className={`flex w-9 h-9 ${props.btnBgColor} p-[9px] ${props.textPrimaryColor} rounded-full`}
+          className={`flex w-[36px] h-[36px] ${props.btnBgColor} p-[9px] ${props.textPrimaryColor} rounded-full`}
         >
           {props.icon}
         </span>
-        <div className="flex flex-col gap-1 line-clamp-1">
+        <div className="flex flex-col gap-1 line-clamp-1 w-full">
           <p
-            className={`text-sm ${props.textPrimaryColor} font-semibold line-clamp-1`}
+            className={`text-sm ${props.textPrimaryColor} font-semibold YekanBakhFaNum line-clamp-1`}
           >
             {title}
           </p>
           <p
             className={`text-xs ${props.textSecondaryColor} YekanBakhFaNum line-clamp-1`}
           >
-            {date + " - " + time}
+            {dateFormate(start)}
           </p>
         </div>
       </div>
 
       <button
-        className={`${props.btnBgColor} ${props.textPrimaryColor} py-1 px-3 rounded-md text-xs line-clamp-1`}
+        className={`${props.btnBgColor} ${props.textPrimaryColor} py-1 px-3 rounded-md text-xs  `}
       >
         {props.ctaText}
       </button>

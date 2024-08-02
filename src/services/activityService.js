@@ -1,12 +1,12 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-import { API_USER_URL } from "../constants/api_endpoints";
+import { API_ACTIVITY_URL } from "../constants/api_endpoints";
 import { getAccessTokenCookies } from "../utils/accessTokenCookie";
 
-export const authApi = createApi({
-  reducerPath: "authApi",
+export const activityApi = createApi({
+  reducerPath: "activityApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: API_USER_URL,
+    baseUrl: API_ACTIVITY_URL,
     prepareHeaders: async (headers, { getState }) => {
       const token = await getAccessTokenCookies();
       if (token) {
@@ -16,9 +16,9 @@ export const authApi = createApi({
     },
   }),
   endpoints: (build) => ({
-    getUserDetails: build.query({
+    getUpcomingActivities: build.query({
       query: () => ({
-        url: "/my-info/",
+        url: "/upcoming-activities/",
         method: "GET",
       }),
     }),
@@ -26,4 +26,4 @@ export const authApi = createApi({
 });
 
 // export react hook
-export const { useGetUserDetailsQuery } = authApi;
+export const { useGetUpcomingActivitiesQuery } = activityApi;
