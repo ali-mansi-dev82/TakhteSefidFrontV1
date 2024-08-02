@@ -1,76 +1,107 @@
-import React, { useState } from "react";
-// import { Button, InputAdornment, TextField } from "@mui/material";
+import React, { useEffect, useMemo, useState } from "react";
+import moment from "jalali-moment";
+// import { Box, Tab, Tabs } from "@mui/material";
 
 import InitialLayoutMobile from "../../layouts/mobile/single_layout";
+import { useGetUpcomingActivitiesQuery } from "../../services/activityService";
 import ActivityComponent from "../dashboard/mobile/ActivityComponent";
-import { Box, Tab, Tabs } from "@mui/material";
-// import CourseComponent from "../dashboard/mobile/CourseComponent";
-// import { ReactComponent as Settings } from "../../assets/icons/settings-2.svg";
-// import { ReactComponent as Search } from "../../assets/icons/search.svg";
 
-const days = [
-  { text: "شنبه" },
-  { text: "یک" },
-  { text: "دو" },
-  { text: "سه" },
-  { text: "چهار" },
-  { text: "پنج" },
-  { text: "جمعـ" },
-];
-
-const activities = [
-  {
-    type: "exam",
-    title: "امتحان فتوشاپ",
-    date: "10 فروردین 1403",
-    time: "14:30",
-  },
-  {
-    type: "practice",
-    title: "انجام تکلیف طراحی گرافیک",
-    date: "11 فروردین 1403",
-    time: "14:30",
-  },
-  {
-    type: "class",
-    title: "طراحی گرافیک",
-    date: "14 فروردین 1403",
-    time: "14:30",
-  },
-  {
-    type: "class",
-    title: "طراحی بصری",
-    date: "11 فروردین 1403",
-    time: "14:30",
-  },
-];
+const days = ["شنبه", "یک", "دو", "سه", "چهار", "پنج", "جمعـ"];
 
 const Mobile = () => {
-  const [value, setValue] = useState(1);
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
+  const [daySelect, setDaySelect] = useState(moment().format("jDD"));
+  const [daySelectActivity, setDaySelectActivity] = useState([]);
+  const [firstDateWeekDay, setFirstDateWeekDay] = useState(undefined);
+
+  const activities = useGetUpcomingActivitiesQuery();
+
+  const monthData = useMemo(() => {
+    if (activities.status === "fulfilled") {
+      const today = moment();
+      const startOfMonth = moment(today).startOf("month");
+      const endOfMonth = moment(today).endOf("month");
+      const daysOfMonth = [];
+
+      for (let i = 0; i < endOfMonth.format("jDD"); i++) {
+        const currentDay = moment(startOfMonth).add(i, "days");
+        const dayOfMonth = currentDay.format("jDD");
+        const dayOfWeek = currentDay.format("e");
+        if (i === 0) setFirstDateWeekDay(Number(dayOfWeek));
+        const dayActivities = activities?.data?.filter((activity) => {
+          return moment
+            .from(activity.start, "en", "YYYY-MM-DD")
+            .isSame(currentDay, "day");
+        });
+        daysOfMonth.push({
+          dayOfWeek,
+          dayOfMonth,
+          activities: dayActivities,
+        });
+      }
+
+      return daysOfMonth;
+    }
+  }, [activities]);
+
+  useEffect(() => {
+    const daySelectData = monthData?.filter(
+      (value) => value.dayOfMonth === daySelect
+    );
+    if (daySelectData?.length > 0) {
+      const daySelectActivityData = daySelectData[0].activities;
+      setDaySelectActivity(daySelectActivityData);
+    }
+  }, [daySelect, monthData]);
+
+  moment.locale("fa");
+
   return (
     <InitialLayoutMobile title="تقویم">
       <div className="flex flex-col gap-4">
-        <div className="grid grid-cols-7 grid-rows-6 flex-wrap gap-y-6">
+        <div className="grid grid-cols-7 grid-rows-6 flex-wrap gap-y-4">
           {days.map((item) => (
-            <div className="flex flex-col items-center gap-2 flex-1">
-              <span className="text-xs text-gray-500">{item.text}</span>
+            <div className="flex flex-col items-center justify-center gap-2  h-full">
+              <span className="text-xs text-gray-500">{item}</span>
             </div>
           ))}
-          <div className="flex flex-col items-center gap-2 flex-1"></div>
-          <div className="flex flex-col items-center gap-2 flex-1"></div>
-          {Array.from({ length: 31 }, (_, i) => i + 1).map((item) => (
-            <div className="flex flex-col items-center gap-2 flex-1">
-              <span className="text-xs text-gray-500 YekanBakhFaNum">
-                {item}
+
+          {firstDateWeekDay &&
+            firstDateWeekDay !== undefined &&
+            Array(firstDateWeekDay)
+              .fill()
+              .map((i) => (
+                <div className="flex flex-col items-center gap-2 flex-1"></div>
+              ))}
+          {monthData?.map((item) => (
+            <div
+              className="flex flex-col items-center gap-1 cursor-pointer"
+              onClick={setDaySelect.bind(this, item.dayOfMonth)}
+            >
+              <span
+                className={`inline-flex flex-col w-8 h-8 items-center justify-center text-xs text-gray-700 YekanBakhFaNum font-semibold rounded-full ${
+                  item.dayOfMonth === daySelect &&
+                  `bg-primary-70 text-white !font-normal`
+                }`}
+              >
+                {item.dayOfMonth}
+                {item.activities.length > 0 && (
+                  <span className="w-[5px] h-[5px] bg-yellow-400 rounded"></span>
+                )}
               </span>
             </div>
           ))}
         </div>
+        <div className="flex flex-col min-h-[25vh] gap-4 mt-4">
+          {daySelectActivity.length > 0 ? (
+            daySelectActivity?.map((item) => <ActivityComponent {...item} />)
+          ) : (
+            <div className="text-xs text-gray-500 text-center h-full items-stretch pt-12">
+              در این روز فعالیتی ندارید !!!
+            </div>
+          )}
+        </div>
         <div className="flex flex-col gap-1">
-          <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+          {/* <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
             <Tabs
               value={value}
               onChange={handleChange}
@@ -81,16 +112,16 @@ const Mobile = () => {
               <Tab label="تکالیف" />
               <Tab label="آزمونها" />
             </Tabs>
-          </Box>
-          {value === 0 && (
+          </Box> */}
+          {/* {value === 0 && (
             <div className="flex flex-col gap-3 py-4">
               {activities
                 .map((item) => (
                   <ActivityComponent {...item} />
                 ))}
             </div>
-          )}
-          {value === 1 && (
+          )} */}
+          {/* {value === 1 && (
             <div className="flex flex-col gap-3 py-4">
               {activities
                 .filter((item) => item.type === "class")
@@ -107,8 +138,8 @@ const Mobile = () => {
                   <ActivityComponent {...item} />
                 ))}
             </div>
-          )}
-          {value === 3 && (
+          )} */}
+          {/* {value === 3 && (
             <div className="flex flex-col gap-3 py-4">
               {activities
                 .filter((item) => item.type === "exam")
@@ -116,7 +147,7 @@ const Mobile = () => {
                   <ActivityComponent {...item} />
                 ))}
             </div>
-          )}
+          )} */}
         </div>
       </div>
     </InitialLayoutMobile>
