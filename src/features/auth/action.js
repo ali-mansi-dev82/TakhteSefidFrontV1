@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-import { API_AUTH_URL } from "../../config";
+import { API_AUTH_URL } from "../../constants/api_endpoints";
 
 export const send_otp = createAsyncThunk(
   "auth/send_otp",
