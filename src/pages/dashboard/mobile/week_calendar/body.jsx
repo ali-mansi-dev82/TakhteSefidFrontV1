@@ -26,7 +26,7 @@ const Body = ({ weekData }) => {
           تقویم
         </span>
         <Link
-          to={`/my-learning`}
+          to={`/calendar`}
           className="text-sm flex gap-2 justify-center text-primary-60"
         >
           همه
