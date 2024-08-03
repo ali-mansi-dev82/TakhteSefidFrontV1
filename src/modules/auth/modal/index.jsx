@@ -16,7 +16,7 @@ const Index = ({ open, onClose }) => {
 
   const handleClose = () => {
     if (onClose) return onClose();
-    navigate(`/s/`);
+    navigate(`/dashboard`);
   };
   return (
     <Dialog
