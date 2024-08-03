@@ -81,6 +81,9 @@ const Mobile = () => {
                 className={`inline-flex flex-col w-8 h-8 items-center justify-center text-xs text-gray-700 YekanBakhFaNum font-semibold rounded-full ${
                   item.dayOfMonth === daySelect &&
                   `bg-primary-70 text-white !font-normal`
+                } ${
+                  moment().format("jDD") === item.dayOfMonth &&
+                  `border-2 border-primary-70 `
                 }`}
               >
                 {item.dayOfMonth}

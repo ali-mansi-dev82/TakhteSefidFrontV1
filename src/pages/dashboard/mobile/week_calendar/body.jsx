@@ -22,9 +22,7 @@ const Body = ({ weekData }) => {
   return (
     <div className="flex flex-col gap-4">
       <div className="inline-flex justify-between items-center">
-        <span className="text-base text-gray-700">
-          تقویم
-        </span>
+        <span className="text-base text-gray-700">تقویم</span>
         <Link
           to={`/calendar`}
           className="text-sm flex gap-2 justify-center text-primary-60"
@@ -46,6 +44,9 @@ const Body = ({ weekData }) => {
               className={`inline-flex flex-col w-8 h-8 items-center justify-center text-xs text-gray-700 YekanBakhFaNum font-semibold rounded-full ${
                 item.dayOfMonth === daySelect &&
                 `bg-primary-70 text-white !font-normal`
+              } ${
+                moment().format("jDD") === item.dayOfMonth &&
+                `border-2 border-primary-70 `
               }`}
             >
               {item.dayOfMonth}
