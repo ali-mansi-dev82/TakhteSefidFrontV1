@@ -19,6 +19,7 @@ import GlobalManagement from "./pages/global_management";
 import ManageCourse from "./pages/manage_course";
 import Login from "./pages/login";
 import Index from "./pages/home";
+import EditMyInfo from "./pages/edit_my_info";
 
 const App = ({ log_in }) => {
   const [isMobile] = useResponsive();
@@ -64,6 +65,10 @@ const App = ({ log_in }) => {
       <Route
         path="/my-panel"
         element={<AuthGuard component={<MyPanel isMobile={isMobile} />} />}
+      />
+      <Route
+        path="/edit-my-info"
+        element={<AuthGuard component={<EditMyInfo isMobile={isMobile} />} />}
       />
       <Route
         path="/global_management"
