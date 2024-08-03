@@ -8,6 +8,7 @@ import InitialLayoutMobile from "../../../layouts/mobile/initial_layout";
 import CourseComponent from "./CourseComponent";
 import WeekCalendar from "./week_calendar";
 import SkeletonSection from "../../../components/skeleton_section";
+import ButtomDrawer from "../../edit_my_info/components/buttom_drawer";
 
 const Mobile = () => {
   const { userInfo } = useSelector((redux) => redux.auth);
@@ -51,6 +52,7 @@ const Mobile = () => {
           </div>
         </div>
       </div>
+      <ButtomDrawer />
     </InitialLayoutMobile>
   );
 };
