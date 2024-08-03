@@ -6,8 +6,9 @@ import { ReactComponent as NotebookPen } from "../../../assets/icons/notebook-pe
 import { ReactComponent as Check } from "../../../assets/icons/square-check-big.svg";
 import { ReactComponent as SquarePlay } from "../../../assets/icons/square-play.svg";
 import { ReactComponent as File } from "../../../assets/icons/file.svg";
+import { dateFormate } from "../../../utils/dateFormat";
 
-const ActivityComponent = ({ title, type, date, time }) => {
+const ActivityComponent = ({ title, type, start }) => {
   const getColor = () => {
     switch (type) {
       case "exam":
@@ -17,7 +18,7 @@ const ActivityComponent = ({ title, type, date, time }) => {
           btnBgColor: "bg-yellow-100",
           textPrimaryColor: "text-yellow-700",
           textSecondaryColor: "text-yellow-600",
-          ctaText: "شروع آزمون",
+          ctaText: "شروع",
         };
       case "practice":
         return {
@@ -26,7 +27,7 @@ const ActivityComponent = ({ title, type, date, time }) => {
           btnBgColor: "bg-blue-100",
           textPrimaryColor: "text-blue-700",
           textSecondaryColor: "text-blue-600",
-          ctaText: "ارسال تمرین",
+          ctaText: "ارسال",
         };
       case "blog":
         return {
@@ -34,7 +35,7 @@ const ActivityComponent = ({ title, type, date, time }) => {
           btnBgColor: "bg-gray-100",
           textPrimaryColor: "text-gray-700",
           textSecondaryColor: "text-gray-600",
-          ctaText: "خوندن مقاله",
+          ctaText: "خوندن",
         };
       case "video":
         return {
@@ -42,7 +43,7 @@ const ActivityComponent = ({ title, type, date, time }) => {
           btnBgColor: "bg-teal-100",
           textPrimaryColor: "text-teal-700",
           textSecondaryColor: "text-teal-600",
-          ctaText: "دیدن ویدیو",
+          ctaText: "دیدن",
         };
       case "class":
         return {
@@ -50,7 +51,7 @@ const ActivityComponent = ({ title, type, date, time }) => {
           btnBgColor: "bg-green-100",
           textPrimaryColor: "text-green-700",
           textSecondaryColor: "text-green-600",
-          ctaText: "پیوستن کلاس",
+          ctaText: "پیوستن",
         };
       case "file":
         return {
@@ -58,7 +59,7 @@ const ActivityComponent = ({ title, type, date, time }) => {
           btnBgColor: "bg-red-100",
           textPrimaryColor: "text-red-700",
           textSecondaryColor: "text-red-600",
-          ctaText: "دانلود فایل",
+          ctaText: "دانلود",
         };
       default:
         return {
@@ -90,7 +91,7 @@ const ActivityComponent = ({ title, type, date, time }) => {
           <p
             className={`text-xs ${props.textSecondaryColor} YekanBakhFaNum line-clamp-1`}
           >
-            {date + " - " + time}
+            {dateFormate(start)}
           </p>
         </div>
       </div>
