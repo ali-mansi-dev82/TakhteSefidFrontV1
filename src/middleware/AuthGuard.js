@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import AuthModal from "../modules/auth/modal";
 
 const AuthGuard = ({ component, role = "user" }) => {
-  const { loading, isAuthed, userInfo, isSuccess, isError } = useSelector(
+  const { loading, isAuthed, isSuccess, isError } = useSelector(
     (state) => state.auth
   );
   return (
@@ -15,7 +15,7 @@ const AuthGuard = ({ component, role = "user" }) => {
           <CircularProgress variant="indeterminate" color="primary" />
         </div>
       )}
-      {!loading && isSuccess && isAuthed && userInfo.role === role && component}
+      {!loading && isSuccess && isAuthed && component}
       {!loading && isError && !isAuthed && <AuthModal open={true} />}
     </>
   );
