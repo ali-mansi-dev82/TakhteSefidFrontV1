@@ -2,22 +2,19 @@ import { Button, Drawer } from "@mui/material";
 import React, { useEffect } from "react";
 import useDisclosure from "../../../hooks/useDisclosure";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { getFirstModalCookie } from "../../../utils/firstModalCookie";
 
 const ButtomDrawer = () => {
   const [open, onOpen, onClose] = useDisclosure(0);
-  const { userInfo } = useSelector((redux) => redux.auth);
-  const cookie = getFirstModalCookie();
+  const key = "buttom_navigation";
 
   useEffect(() => {
-    console.log(cookie);
-  }, [cookie]);
+    const storedOptions = localStorage.getItem(key);
+    if (storedOptions === null) {
+      onOpen();
+      localStorage.setItem(key, true);
+    }
+  }, [onOpen]);
 
-  //   useEffect(() => {
-  //     if (open === 0 && (!userInfo?.fullname || userInfo?.fullname === ""))
-  //       onOpen();
-  //   }, [userInfo, onOpen, open]);
   return (
     <div>
       <Drawer anchor="bottom" open={open} onClose={onClose}>
