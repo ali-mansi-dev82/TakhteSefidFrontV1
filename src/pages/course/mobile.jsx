@@ -1,6 +1,7 @@
-import { Avatar, AvatarGroup, Skeleton } from "@mui/material";
-import { useParams } from "react-router-dom";
+import { Avatar, AvatarGroup, Button, Skeleton } from "@mui/material";
+import { Link, useParams } from "react-router-dom";
 import React from "react";
+import { useSelector } from "react-redux";
 
 import InitialLayoutMobile from "../../layouts/mobile/single_layout";
 import CircularProgressWithLabel from "./components/circleProgressWithLabel";
@@ -8,16 +9,38 @@ import avatar from "../../assets/images/avatar.jpg";
 import SectionComponent from "./components/sectionComponent";
 import MainContainer from "../../components/container";
 import { useGetCourseDetailQuery } from "../../services/courseService";
+import { ReactComponent as Setting } from "../../assets/icons/settings-2.svg";
 
 const Mobile = () => {
   const { id } = useParams();
   const { data } = useGetCourseDetailQuery(id);
+  const { userInfo } = useSelector((redux) => redux.auth);
 
   return (
     <InitialLayoutMobile
       title={data?.data?.title || <Skeleton height={25} />}
       container="off"
       key={id}
+      inerrButtonNavigation={
+        data?.data?.teacher?._id === userInfo?._id ? (
+          <div className="w-full px-4">
+            <Link to={`/manage_course/${data?.data?._id}`}>
+              <Button
+                variant="contained"
+                fullWidth
+                size="medium"
+                startIcon={
+                  <span className="flex w-4 h-4">
+                    <Setting />
+                  </span>
+                }
+              >
+                مدیریت دوره
+              </Button>
+            </Link>
+          </div>
+        ) : null
+      }
     >
       {data?.data?.image ? (
         <img
