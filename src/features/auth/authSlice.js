@@ -1,14 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
-
 import { removeAccessTokenCookies } from "../../utils/accessTokenCookie";
 
 const initialState = {
   isAuthed: false,
-  loading: false,
+  loading: true,
   userInfo: {}, // for user object
   userToken: null, // for storing the JWT
   error: null,
-  success: false, // for monitoring the registration process.
+  isError: false,
+  isSuccess: false,
 };
 
 export const authSlice = createSlice({
@@ -16,20 +16,27 @@ export const authSlice = createSlice({
   initialState,
   reducers: {
     log_in: (state, action) => {
-      state.isAuthed = true;
       state.userInfo = action.payload.userInfo;
       state.userToken = action.payload.userToken;
+      state.isAuthed = true;
+      state.isSuccess = true;
+      state.loading = false;
     },
-    fetch_data: (state) => {
-      state.loading = true;
+    failed_request: (state) => {
+      state.isAuthed = false;
+      state.isError = true;
+      state.isSuccess = false;
+      state.loading = false;
     },
     log_out: (state) => {
-      state.isAuthed = false;
       state.userInfo = {};
       state.userToken = null;
+      state.isAuthed = false;
+      state.isSuccess = false;
+      state.loading = false;
       removeAccessTokenCookies();
     },
   },
 });
-export const { fetch_data, log_in, log_out } = authSlice.actions;
+export const { log_in, log_out, failed_request } = authSlice.actions;
 export default authSlice.reducer;

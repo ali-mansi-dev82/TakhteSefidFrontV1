@@ -1,29 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { CircularProgress } from "@mui/material";
 import { useSelector } from "react-redux";
 
-import MainContainer from "../components/container";
 import AuthModal from "../modules/auth/modal";
 
-const AuthGuard = ({ component }) => {
-  const { isAuthed } = useSelector((state) => state.auth);
-  const [auth, setAuth] = useState("loading");
-  useEffect(() => {
-    if (isAuthed === false) setAuth(false);
-    if (isAuthed === true) setAuth(true);
-  }, [isAuthed]);
-
+const AuthGuard = ({ component, role = "user" }) => {
+  const { loading, isAuthed, userInfo, isSuccess, isError } = useSelector(
+    (state) => state.auth
+  );
   return (
     <>
-      {auth === "loading" && (
-        <MainContainer
-          className={`w-full flex justify-center  py-44 gap-5`}
-        >
-          <CircularProgress />
-        </MainContainer>
+      {loading && (
+        <div className="fixed flex items-center justify-center top-0 left-0 right-0 bottom-0 z-50">
+          <CircularProgress variant="indeterminate" color="primary" />
+        </div>
       )}
-      {auth === true && component}
-      {auth === false && <AuthModal open={true} />}
+      {!loading && isSuccess && isAuthed && userInfo.role === role && component}
+      {!loading && isError && !isAuthed && <AuthModal open={true} />}
     </>
   );
 };
