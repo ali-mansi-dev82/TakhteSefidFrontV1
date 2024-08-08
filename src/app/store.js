@@ -7,6 +7,8 @@ import { attendApi } from "../services/attendCourseService";
 import { myCourseApi } from "../services/myCourseService";
 import { courseApi } from "../services/courseService";
 import { myCourseManageApi } from "../services/myCourseManageService";
+import { allUserApi } from "../services/allUserService";
+import { allCourseApi } from "../services/alCourseService";
 
 const store = configureStore({
   reducer: {
@@ -17,6 +19,8 @@ const store = configureStore({
     [courseApi.reducerPath]: courseApi.reducer,
     [attendApi.reducerPath]: attendApi.reducer,
     [myCourseManageApi.reducerPath]: myCourseManageApi.reducer,
+    [allUserApi.reducerPath]: allUserApi.reducer,
+    [allCourseApi.reducerPath]: allCourseApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware()
@@ -25,6 +29,8 @@ const store = configureStore({
       .concat(attendApi.middleware)
       .concat(courseApi.middleware)
       .concat(myCourseManageApi.middleware)
-      .concat(myCourseApi.middleware),
+      .concat(myCourseApi.middleware)
+      .concat(allCourseApi.middleware)
+      .concat(allUserApi.middleware),
 });
 export default store;

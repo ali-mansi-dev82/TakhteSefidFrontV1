@@ -3,7 +3,7 @@ import { ReactComponent as Training } from "../../../assets/icons/training.svg";
 import { ReactComponent as Calendar } from "../../../assets/icons/calendar.svg";
 import { ReactComponent as NotebookPen } from "../../../assets/icons/notebook-pen.svg";
 import { ReactComponent as Check } from "../../../assets/icons/square-check-big.svg";
-import { ReactComponent as Setting } from "../../../assets/icons/settings-2.svg";
+import { ReactComponent as Setting } from "../../../assets/icons/settings-2-light.svg";
 
 const items = {
   user: [

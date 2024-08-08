@@ -17,6 +17,7 @@ import Login from "../pages/login";
 import Index from "../pages/home";
 import EditMyInfo from "../pages/edit_my_info";
 import NotFound from "../pages/not_found";
+import Setting from "../pages/setting";
 import useResponsive from "../hooks/useResponsive";
 
 const RoutesComponents = () => {
@@ -64,6 +65,10 @@ const RoutesComponents = () => {
       <Route
         path="/edit-my-info"
         element={<AuthGuard component={<EditMyInfo isMobile={isMobile} />} />}
+      />
+      <Route
+        path="/setting"
+        element={<AuthGuard component={<Setting isMobile={isMobile} />} />}
       />
       <Route
         path="/global_management"
