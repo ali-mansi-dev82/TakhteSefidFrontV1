@@ -11,12 +11,12 @@ import MyPanel from "../pages/my_panel";
 import Course from "../pages/course";
 import CreateCourse from "../pages/create_course";
 import EditCourse from "../pages/edit_course";
-import GlobalManagement from "../pages/global_management";
 import ManageCourse from "../pages/manage_course";
 import Login from "../pages/login";
 import Index from "../pages/home";
 import EditMyInfo from "../pages/edit_my_info";
 import NotFound from "../pages/not_found";
+import Setting from "../pages/setting";
 import useResponsive from "../hooks/useResponsive";
 
 const RoutesComponents = () => {
@@ -66,10 +66,8 @@ const RoutesComponents = () => {
         element={<AuthGuard component={<EditMyInfo isMobile={isMobile} />} />}
       />
       <Route
-        path="/global_management"
-        element={
-          <AuthGuard component={<GlobalManagement isMobile={isMobile} />} />
-        }
+        path="/setting"
+        element={<AuthGuard component={<Setting isMobile={isMobile} />} />}
       />
       <Route path="*" element={<NotFound isMobile={isMobile} />} />
     </Routes>
