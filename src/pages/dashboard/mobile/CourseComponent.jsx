@@ -4,7 +4,6 @@ import React from "react";
 
 import { ReactComponent as User } from "../../../assets/icons/user.svg";
 import avatar from "../../../assets/images/avatar.jpg";
-// import image from "../../../assets/images/track.png";
 
 const CourseComponent = ({
   course: { _id, title, image, teacher },
@@ -14,6 +13,7 @@ const CourseComponent = ({
     <Link to={`/course/${_id}`} className="border border-gray-200 rounded-lg">
       <div className="flex flex-row gap-4 p-4 h-max">
         <img
+          loading="lazy"
           src={image}
           alt=""
           className="w-[110px] h-[110px] object-cover border border-gray-100 rounded-xl"
