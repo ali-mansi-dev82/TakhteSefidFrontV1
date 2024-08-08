@@ -2,7 +2,7 @@ import { ReactComponent as Dashboard } from "../../assets/icons/dashboard.svg";
 import { ReactComponent as Learning } from "../../assets/icons/learning.svg";
 import { ReactComponent as Calendar } from "../../assets/icons/calendar.svg";
 import { ReactComponent as User } from "../../assets/icons/user.svg";
-import { ReactComponent as Setting } from "../../assets/icons/settings-2.svg";
+import { ReactComponent as Setting } from "../../assets/icons/settings-2-light.svg";
 import { ReactComponent as Training } from "../../assets/icons/training.svg";
 import { ReactComponent as AddCircle } from "../../assets/icons/add-circle.svg";
 

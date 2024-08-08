@@ -4,7 +4,7 @@ import authReducer from "../features/auth/authSlice";
 import { authApi } from "../services/authService";
 import { activityApi } from "../services/activityService";
 import { attendApi } from "../services/attendCourseService";
-import { courseApi } from "../services/courseService";
+import { myCourseApi } from "../services/myCourseService";
 
 const store = configureStore({
   reducer: {
@@ -12,13 +12,13 @@ const store = configureStore({
     [authApi.reducerPath]: authApi.reducer,
     [activityApi.reducerPath]: activityApi.reducer,
     [attendApi.reducerPath]: attendApi.reducer,
-    [courseApi.reducerPath]: courseApi.reducer,
+    [myCourseApi.reducerPath]: myCourseApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware()
       .concat(authApi.middleware)
       .concat(activityApi.middleware)
       .concat(attendApi.middleware)
-      .concat(courseApi.middleware),
+      .concat(myCourseApi.middleware),
 });
 export default store;
