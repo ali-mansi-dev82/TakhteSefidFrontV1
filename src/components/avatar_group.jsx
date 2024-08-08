@@ -3,7 +3,7 @@ import React from "react";
 
 import avatar from "../assets/images/avatar.jpg";
 
-const AvatarGroupWithImage = () => {
+const AvatarGroupWithImage = ({count}) => {
   return (
     <div className="flex flex-row gap-2 items-center mt-2">
       <AvatarGroup max={4}>
@@ -20,8 +20,8 @@ const AvatarGroupWithImage = () => {
           src={avatar}
         />
       </AvatarGroup>
-      <span className="text-xs text-gray-300 line-clamp-1">
-        ۵۰+ دانشجوی دوره
+      <span className="text-xs text-gray-400 line-clamp-1">
+        {count} دانشجوی
       </span>
     </div>
   );
