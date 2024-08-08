@@ -1,12 +1,12 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-import { API_ATTEND_COURSE_URL } from "../constants/api_endpoints";
+import { API_COURSE_URL } from "../constants/api_endpoints";
 import { getAccessTokenCookies } from "../utils/accessTokenCookie";
 
-export const attendApi = createApi({
-  reducerPath: "attendApi",
+export const myCourseApi = createApi({
+  reducerPath: "myCourseApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: API_ATTEND_COURSE_URL,
+    baseUrl: API_COURSE_URL,
     prepareHeaders: async (headers, { getState }) => {
       const token = await getAccessTokenCookies();
       if (token) {
@@ -16,12 +16,12 @@ export const attendApi = createApi({
     },
   }),
   endpoints: (build) => ({
-    getMyCourse: build.query({
+    getMyTraining: build.query({
       query: () => ({
-        url: "/my-course/",
+        url: "/my-trainings/",
         method: "GET",
       }),
     }),
   }),
 });
-export const { useGetMyCourseQuery } = attendApi;
+export const { useGetMyTrainingQuery } = myCourseApi;

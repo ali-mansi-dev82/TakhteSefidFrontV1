@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 
 import AuthGuard from "../middleware/AuthGuard";
 import MyLearning from "../pages/my_learning";
+import MyTraining from "../pages/my_training";
 import Dashboard from "../pages/dashboard";
 import Register from "../pages/register";
 import Calendar from "../pages/calendar";
@@ -47,6 +48,10 @@ const RoutesComponents = () => {
       <Route
         path="/my-learning"
         element={<AuthGuard component={<MyLearning isMobile={isMobile} />} />}
+      />
+      <Route
+        path="/my-training"
+        element={<AuthGuard component={<MyTraining isMobile={isMobile} />} />}
       />
       <Route
         path="/calendar"
