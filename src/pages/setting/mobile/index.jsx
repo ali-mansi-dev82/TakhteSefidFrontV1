@@ -5,11 +5,11 @@ import { bindActionCreators } from "@reduxjs/toolkit";
 import InitialLayoutMobile from "../../../layouts/mobile/single_layout";
 import { log_out } from "../../../features/auth/authSlice";
 import { Box, Tab, Tabs } from "@mui/material";
+import GeneralTab from "./tabs/general";
 import UsersTab from "./tabs/users";
 import CoursesTab from "./tabs/courses";
-import ServicesTab from "./tabs/services";
-import ReportsTab from "./tabs/reports";
-import GeneralTab from "./tabs/general";
+// import ServicesTab from "./tabs/services";
+// import ReportsTab from "./tabs/reports";
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -47,8 +47,8 @@ const Mobile = ({ log_out }) => {
           <Tab label="کلی" />
           <Tab label="کاربران" />
           <Tab label="دوره ها" />
-          <Tab label="سرویس ها" />
-          <Tab label="گزارشات" />
+          {/* <Tab label="سرویس ها" /> */}
+          {/* <Tab label="گزارشات" /> */}
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={0}>
@@ -60,12 +60,12 @@ const Mobile = ({ log_out }) => {
       <CustomTabPanel value={value} index={2}>
         <CoursesTab />
       </CustomTabPanel>
-      <CustomTabPanel value={value} index={3}>
+      {/* <CustomTabPanel value={value} index={3}>
         <ServicesTab />
-      </CustomTabPanel>
-      <CustomTabPanel value={value} index={4}>
+      </CustomTabPanel> */}
+      {/* <CustomTabPanel value={value} index={4}>
         <ReportsTab />
-      </CustomTabPanel>
+      </CustomTabPanel> */}
     </InitialLayoutMobile>
   );
 };
