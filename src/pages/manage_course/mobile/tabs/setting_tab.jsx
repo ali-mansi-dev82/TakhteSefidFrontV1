@@ -1,9 +1,34 @@
-import React from 'react'
+import { Button, FormControlLabel, Skeleton, Switch } from "@mui/material";
+import React from "react";
 
-const SettingTab = () => {
+import { ReactComponent as Trash } from "../../../../assets/icons/trash.svg";
+
+const SettingTab = ({ data }) => {
   return (
-    <div>SettingTab</div>
-  )
-}
+    <div>
+      {!data ? (
+        <Skeleton />
+      ) : (
+        <div className="flex flex-col gap-4">
+          <FormControlLabel
+            control={<Switch defaultChecked={data?.visible} />}
+            label="فعال بودن دوره"
+          />
+          <Button
+            variant="outlined"
+            color="error"
+            startIcon={
+              <span className="inline-flex w-4">
+                <Trash />
+              </span>
+            }
+          >
+            حذف کردن دوره
+          </Button>
+        </div>
+      )}
+    </div>
+  );
+};
 
-export default SettingTab
+export default SettingTab;
