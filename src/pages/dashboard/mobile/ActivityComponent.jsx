@@ -110,4 +110,4 @@ const ActivityComponent = ({ title, type, start }) => {
   );
 };
 
-export default ActivityComponent;
+export default React.memo(ActivityComponent);

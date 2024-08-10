@@ -38,4 +38,4 @@ const ButtomNavigation = ({ inerrButtonNavigation = null }) => {
   );
 };
 
-export default ButtomNavigation;
+export default React.memo(ButtomNavigation);
