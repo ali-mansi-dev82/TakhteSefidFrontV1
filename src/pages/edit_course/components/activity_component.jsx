@@ -8,8 +8,9 @@ import { ReactComponent as SquarePlay } from "../../../assets/icons/square-play.
 import { ReactComponent as File } from "../../../assets/icons/file.svg";
 import { ReactComponent as Trash } from "../../../assets/icons/trash.svg";
 import { ReactComponent as PenLine } from "../../../assets/icons/pen-line.svg";
+import { dateFormate } from "../../../utils/dateFormat";
 
-const ActivityComponent = ({ title, type, date, time }) => {
+const ActivityComponent = ({ title, type, start }) => {
   const getColor = () => {
     switch (type) {
       case "exam":
@@ -92,7 +93,7 @@ const ActivityComponent = ({ title, type, date, time }) => {
           <p
             className={`text-xs ${props.textSecondaryColor} YekanBakhFaNum line-clamp-1`}
           >
-            {date + " - " + time}
+            {dateFormate(start)}
           </p>
         </div>
       </div>

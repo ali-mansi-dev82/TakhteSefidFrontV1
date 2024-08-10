@@ -2,69 +2,26 @@ import React, { useState } from "react";
 import { Autocomplete, Button, TextField } from "@mui/material";
 
 import InitialLayoutMobile from "../../layouts/mobile/single_layout";
-import SectionComponent from "./components/section_component";
 import UploadImages from "./components/image/upload_image";
+import { useGetCourseDetailQuery } from "../../services/courseService";
+import { useParams } from "react-router-dom";
+import SectionComponent from "./components/section_component";
 
 const Mobile = () => {
+  const { id } = useParams();
+  const { data } = useGetCourseDetailQuery(id);
+
   const [images, setImages] = useState([]);
-  const section = [
-    {
-      title: "مقدمه",
-      activity: [
-        {
-          type: "exam",
-          title: "امتحان فتوشاپ",
-          date: "10 فروردین 1403",
-          time: "14:30",
-        },
-        {
-          type: "practice",
-          title: "انجام تکلیف طراحی گرافیک",
-          date: "11 فروردین 1403",
-          time: "14:30",
-        },
-        {
-          type: "class",
-          title: "طراحی گرافیک",
-          date: "14 فروردین 1403",
-          time: "14:30",
-        },
-      ],
-    },
-    {
-      title: "فصل 1",
-      activity: [
-        {
-          type: "file",
-          title: "طراحی گرافیک",
-          date: "14 فروردین 1403",
-          time: "14:30",
-        },
-        {
-          type: "blog",
-          title: "طراحی گرافیک",
-          date: "14 فروردین 1403",
-          time: "14:30",
-        },
-        {
-          type: "video",
-          title: "طراحی گرافیک",
-          date: "14 فروردین 1403",
-          time: "14:30",
-        },
-      ],
-    },
-  ];
 
   return (
     <InitialLayoutMobile
       title="ویرایش دوره"
       inerrButtonNavigation={
         <div className="w-full inline-flex gap-4 px-4">
-          <Button variant="contained" size="large" fullWidth>
-            ثبت دوره
+          <Button variant="contained" size="medium" fullWidth>
+            ثبت ویرایش
           </Button>
-          <Button variant="outlined" size="large" fullWidth>
+          <Button variant="outlined" size="medium" fullWidth>
             انصراف
           </Button>
         </div>
@@ -72,8 +29,13 @@ const Mobile = () => {
     >
       <div className="flex flex-col gap-4">
         <UploadImages images={images} setImages={setImages} />
-        <TextField label="عنوان دوره" />
-        <TextField label="توضیحات" multiline rows={3} />
+        <TextField label="عنوان دوره" defaultValue={data?.data?.title} />
+        <TextField
+          label="توضیحات"
+          multiline
+          rows={3}
+          defaultValue={data?.data?.description}
+        />
         <Autocomplete
           multiple
           fullWidth
@@ -97,7 +59,7 @@ const Mobile = () => {
             </span>
             <Button variant="contained">سرفصل جدید</Button>
           </li>
-          {section.map((item) => (
+          {data?.data?.sections?.map((item) => (
             <SectionComponent {...item} />
           ))}
         </ul>

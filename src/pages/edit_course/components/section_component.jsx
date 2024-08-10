@@ -4,7 +4,7 @@ import ActivityComponent from "./activity_component";
 import { ReactComponent as Trash } from "../../../assets/icons/trash.svg";
 import { ReactComponent as PenLine } from "../../../assets/icons/pen-line.svg";
 
-const SectionComponent = ({ title, activity }) => {
+const SectionComponent = ({ title, activities }) => {
   const [open, setOpen] = useState(true);
   return (
     <ul className="flex flex-col">
@@ -29,7 +29,7 @@ const SectionComponent = ({ title, activity }) => {
       </div>
       </li>
       <ul className={`flex flex-col h-0 overflow-hidden ${open && `h-auto py-2`} duration-300 ease-in-out	 `}>
-        {activity.map((activity) => (
+        {activities?.map((activity) => (
           <ActivityComponent {...activity} />
         ))}
       </ul>

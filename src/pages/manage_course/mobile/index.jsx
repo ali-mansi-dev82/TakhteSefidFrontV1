@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, Tab, Tabs } from "@mui/material";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 import InitialLayoutMobile from "../../../layouts/mobile/single_layout";
 import MainContainer from "../../../components/container";
@@ -37,16 +37,18 @@ const Mobile = () => {
               </div>
               <AvatarGroupWithImage count={data?.attendes} />
             </div>
-            <Button
-              variant="outlined"
-              endIcon={
-                <span className="inline-flex w-3">
-                  <PenLine />
-                </span>
-              }
-            >
-              ویرایش دوره
-            </Button>
+            <Link to={`/edit_course/${id}`}>
+              <Button
+                variant="outlined"
+                endIcon={
+                  <span className="inline-flex w-3">
+                    <PenLine />
+                  </span>
+                }
+              >
+                ویرایش دوره
+              </Button>
+            </Link>
           </div>
           <div className="border-b border-gray-200">
             <Tabs
