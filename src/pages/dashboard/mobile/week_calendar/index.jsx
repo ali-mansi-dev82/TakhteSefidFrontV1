@@ -40,4 +40,4 @@ const Index = () => {
   return weekData ? <Body weekData={weekData} /> : <SkeletonSection />;
 };
 
-export default Index;
+export default React.memo(Index);

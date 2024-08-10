@@ -33,4 +33,4 @@ const AvatarGroupWithImage = ({ count }) => {
   );
 };
 
-export default AvatarGroupWithImage;
+export default React.memo(AvatarGroupWithImage);
