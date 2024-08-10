@@ -1,23 +1,18 @@
-import React from "react";
-import { CircularProgress } from "@mui/material";
+import React, { lazy, Suspense } from "react";
 import { useSelector } from "react-redux";
+import { LoadingScreenFixed } from "../components/loading";
 
-import AuthModal from "../modules/auth/modal";
+const AuthModal = lazy(() => import("../modules/auth/modal"));
 
 const AuthGuard = ({ component, role = "user" }) => {
   const { loading, isAuthed, isSuccess, isError } = useSelector(
     (state) => state.auth
   );
   return (
-    <>
-      {loading && (
-        <div className="fixed flex items-center justify-center top-0 left-0 right-0 bottom-0 z-50">
-          <CircularProgress variant="indeterminate" color="primary" />
-        </div>
-      )}
+    <Suspense fallback={<LoadingScreenFixed />}>
       {!loading && isSuccess && isAuthed && component}
       {!loading && isError && !isAuthed && <AuthModal open={true} />}
-    </>
+    </Suspense>
   );
 };
 

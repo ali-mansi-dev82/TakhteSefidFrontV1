@@ -1,32 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import {
-  Accordion,
-  AccordionDetails,
-  AccordionSummary,
   Button,
 } from "@mui/material";
 
-import BasicLayoutDesktop from "../../layouts/desktop/basic_layout";
-import girl from "../../assets/girl.png";
-import co_partner1 from "../../assets/images/co_partner (1).png";
-import co_partner2 from "../../assets/images/co_partner (2).png";
-import co_partner3 from "../../assets/images/co_partner (3).png";
-import co_partner4 from "../../assets/images/co_partner (4).png";
-import exam from "../../assets/images/exam.png";
-import online_class from "../../assets/images/online_class.png";
-import practise from "../../assets/images/practise.png";
-import chat from "../../assets/images/chat.png";
-import meet from "../../assets/images/meet.png";
-import track from "../../assets/images/track.png";
-import MainContainer from "../../components/container";
-import Footer from "../../modules/auth/footer";
+import BasicLayoutDesktop from "../../../layouts/desktop/basic_layout";
+import MainContainer from "../../../components/container";
+import Footer from "../../../modules/auth/footer";
+import Faqs from "../shared/faqs";
 
 const Desktop = () => {
-  const [expanded, setExpanded] = useState();
-
-  const handleChange = (panel) => (event, newExpanded) => {
-    setExpanded(newExpanded ? panel : false);
-  };
   return (
     <BasicLayoutDesktop container="off">
       <div className="flex flex-col gap-12 py-8">
@@ -56,7 +38,12 @@ const Desktop = () => {
                 </Button>
               </div>
             </div>
-            <img src={girl} alt="girl" className="w-[400px]" />
+            <img
+              src="http://127.0.0.1:3500/public/girl.webp"
+              loading="lazy"
+              alt="girl"
+              className="w-[400px]"
+            />
           </div>
           <div className="bg-gray-100  flex flex-row gap-44 justify-center items-center p-5 rounded-2xl">
             <div className="flex items-center flex-col gap-2">
@@ -89,12 +76,36 @@ const Desktop = () => {
               همراهانی که به تخته سفید اعتماد کردند
             </div>
             <div className="w-full flex justify-between">
-              <img src={co_partner1} alt="co_partner1" />
-              <img src={co_partner2} alt="co_partner2" />
-              <img src={co_partner4} alt="co_partner4" />
-              <img src={co_partner1} alt="co_partner1" />
-              <img src={co_partner3} alt="co_partner3" />
-              <img src={co_partner4} alt="co_partner4" />
+              <img
+                src="http://127.0.0.1:3500/public/educ_partner.webp.webp"
+                loading="lazy"
+                alt="co_partner1"
+              />
+              <img
+                src="http://127.0.0.1:3500/public/fani_partner.webp"
+                loading="lazy"
+                alt="co_partner2"
+              />
+              <img
+                src="http://127.0.0.1:3500/public/jahad_partner.webp"
+                loading="lazy"
+                alt="co_partner3"
+              />
+              <img
+                src="http://127.0.0.1:3500/public/zob_partner.webp"
+                loading="lazy"
+                alt="co_partner4"
+              />
+              <img
+                src="http://127.0.0.1:3500/public/educ_partner.webp.webp"
+                loading="lazy"
+                alt="co_partner1"
+              />
+              <img
+                src="http://127.0.0.1:3500/public/jahad_partner.webp"
+                loading="lazy"
+                alt="co_partner3"
+              />
             </div>
           </div>
           <div className="w-full flex flex-col gap-20">
@@ -111,10 +122,20 @@ const Desktop = () => {
                   <li className="check-list-bullet">امکان ارسال عکس و فایل</li>
                 </ul>
               </div>
-              <img src={exam} alt="" className="w-[500px]" />
+              <img
+                loading="lazy"
+                src="http://127.0.0.1:3500/public/exam.png"
+                alt=""
+                className="w-[500px]"
+              />
             </div>
             <div className="w-full flex flex-row gap-20 items-center justify-center">
-              <img src={online_class} alt="" className="w-[500px]" />
+              <img
+                loading="lazy"
+                src="http://127.0.0.1:3500/public/online_class.webp"
+                alt=""
+                className="w-[500px]"
+              />
               <div className="">
                 <span className="font-bold text-2xl text-gray-600">
                   کلاس های آنلاین و حضور و غیاب
@@ -141,10 +162,20 @@ const Desktop = () => {
                   <li className="check-list-bullet">امکان ارسال عکس و فایل</li>
                 </ul>
               </div>
-              <img src={practise} alt="" className="w-[500px]" />
+              <img
+                loading="lazy"
+                src="http://127.0.0.1:3500/public/practise.webp"
+                alt=""
+                className="w-[500px]"
+              />
             </div>
             <div className="w-full flex flex-row gap-20 items-center justify-center">
-              <img src={chat} alt="" className="w-[500px]" />
+              <img
+                loading="lazy"
+                src="http://127.0.0.1:3500/public/chat.webp"
+                alt=""
+                className="w-[500px]"
+              />
               <div className="">
                 <span className="font-bold text-2xl text-gray-600">
                   امکان چت با همکلاسی ها و اساتید
@@ -171,10 +202,20 @@ const Desktop = () => {
                   <li className="check-list-bullet">امکان ارسال عکس و فایل</li>
                 </ul>
               </div>
-              <img src={meet} alt="" className="w-[500px]" />
+              <img
+                loading="lazy"
+                src="http://127.0.0.1:3500/public/meet.webp"
+                alt=""
+                className="w-[500px]"
+              />
             </div>
             <div className="w-full flex flex-row gap-20 items-center justify-center">
-              <img src={track} alt="" className="w-[500px]" />
+              <img
+                loading="lazy"
+                src="http://127.0.0.1:3500/public/track.webp"
+                alt=""
+                className="w-[500px]"
+              />
               <div className="">
                 <span className="font-bold text-2xl text-gray-600">
                   امکان شخصی سازی
@@ -187,76 +228,7 @@ const Desktop = () => {
               </div>
             </div>
           </div>
-          <div className="">
-            <Accordion
-              expanded={expanded === "panel1"}
-              onChange={handleChange("panel1")}
-            >
-              <AccordionSummary
-                aria-controls="panel1d-content"
-                id="panel1d-header"
-              >
-                امکانات تخته سفید چیه؟
-              </AccordionSummary>
-              <AccordionDetails>
-                این بدنه آکاردئونی اولین مورد است. به طور پیش فرض نشان داده می
-                شود، تا زمانی که افزونه collapse کلاس های مناسبی را که برای
-                استایل دادن به هر عنصر استفاده می کنیم اضافه کند. این کلاس ها
-                ظاهر کلی و همچنین نمایش و پنهان شدن از طریق انتقال CSS را کنترل
-                می کنند. شما می توانید هر یک از این موارد را با CSS سفارشی یا
-                نادیده گرفتن متغیرهای پیش فرض ما تغییر دهید. همچنین شایان ذکر
-                است که تقریباً هر HTML می تواند در داخل .accordion-body قرار
-                گیرد، اگرچه این انتقال سرریز را محدود می کند.
-              </AccordionDetails>
-            </Accordion>
-            <Accordion
-              expanded={expanded === "panel2"}
-              onChange={handleChange("panel2")}
-            >
-              <AccordionSummary
-                aria-controls="panel1d-content"
-                id="panel1d-header"
-              >
-                امکانات تخته سفید چیه؟
-              </AccordionSummary>
-              <AccordionDetails>
-                این بدنه آکاردئونی اولین مورد است. به طور پیش فرض نشان داده می
-                شود، تا زمانی که افزونه collapse کلاس های مناسبی را که برای
-                استایل دادن به هر عنصر استفاده می کنیم اضافه کند. این کلاس ها
-                ظاهر کلی و همچنین نمایش و پنهان شدن از طریق انتقال CSS را کنترل
-                می کنند. شما می توانید هر یک از این موارد را با CSS سفارشی یا
-                نادیده گرفتن متغیرهای پیش فرض ما تغییر دهید. همچنین شایان ذکر
-                است که تقریباً هر HTML می تواند در داخل .accordion-body قرار
-                گیرد، اگرچه این انتقال سرریز را محدود می کند.
-              </AccordionDetails>
-            </Accordion>
-            <Accordion
-              expanded={expanded === "panel3"}
-              onChange={handleChange("panel3")}
-            >
-              <AccordionSummary
-                aria-controls="panel1d-content"
-                id="panel1d-header"
-              >
-                امکانات تخته سفید چیه؟
-              </AccordionSummary>
-              <AccordionDetails>
-                این بدنه آکاردئونی اولین مورد است. به طور پیش فرض نشان داده می
-                شود، تا زمانی که افزونه collapse کلاس های مناسبی را که برای
-                استایل دادن به هر عنصر استفاده می کنیم اضافه کند. این کلاس ها
-                ظاهر کلی و همچنین نمایش و پنهان شدن از طریق انتقال CSS را کنترل
-                می کنند. شما می توانید هر یک از این موارد را با CSS سفارشی یا
-                نادیده گرفتن متغیرهای پیش فرض ما تغییر دهید. همچنین شایان ذکر
-                است که تقریباً هر HTML می تواند در داخل .accordion-body قرار
-                گیرد، اگرچه این انتقال سرریز را محدود می کند.
-              </AccordionDetails>
-            </Accordion>
-          </div>
-          <div className="flex items-center justify-center">
-            <Button variant="contained" size="medium">
-              سوال های بیشتر
-            </Button>
-          </div>
+          <Faqs />
           <div className="">
             <div className="flex flex-row items-center justify-between gap-3 bg-primary-0 py-8 px-20 rounded-xl">
               <div className="flex flex-col gap-3">

@@ -1,15 +1,15 @@
-import { Avatar, AvatarGroup, Button, Skeleton } from "@mui/material";
+import { Button, Skeleton } from "@mui/material";
 import { Link, useParams } from "react-router-dom";
 import React from "react";
 import { useSelector } from "react-redux";
 
 import InitialLayoutMobile from "../../layouts/mobile/single_layout";
 import CircularProgressWithLabel from "./components/circleProgressWithLabel";
-import avatar from "../../assets/images/avatar.jpg";
 import SectionComponent from "./components/sectionComponent";
 import MainContainer from "../../components/container";
 import { useGetCourseDetailQuery } from "../../services/courseService";
 import { ReactComponent as Setting } from "../../assets/icons/settings-2.svg";
+import AvatarGroupWithImage from "../../components/avatar_group";
 
 const Mobile = () => {
   const { id } = useParams();
@@ -61,33 +61,7 @@ const Mobile = () => {
           <div className="text-sm text-gray-400">
             {data?.data?.teacher?.fullname || <Skeleton height={65} />}
           </div>
-          <div className="flex flex-row gap-2 items-center">
-            <AvatarGroup max={4}>
-              <Avatar
-                sx={{ width: 24, height: 24 }}
-                alt="Remy Sharp"
-                src={avatar}
-              />
-              <Avatar
-                sx={{ width: 24, height: 24 }}
-                alt="Travis Howard"
-                src={avatar}
-              />
-              <Avatar
-                sx={{ width: 24, height: 24 }}
-                alt="Cindy Baker"
-                src={avatar}
-              />
-              <Avatar
-                sx={{ width: 24, height: 24 }}
-                alt="Agnes Walker"
-                src={avatar}
-              />
-            </AvatarGroup>
-            <span className="text-xs text-gray-400 line-clamp-1">
-              {data?.attendes} دانشجوی
-            </span>
-          </div>
+          <AvatarGroupWithImage count={data?.attendes} />
           <p className="text-sm leading-7 text-gray-400">
             {data?.data?.description || <Skeleton height={65} />}
           </p>
