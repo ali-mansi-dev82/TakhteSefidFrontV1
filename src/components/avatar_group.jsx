@@ -1,23 +1,29 @@
 import { Avatar, AvatarGroup } from "@mui/material";
 import React from "react";
 
-import avatar from "../assets/images/avatar.jpg";
-
-const AvatarGroupWithImage = ({count}) => {
+const AvatarGroupWithImage = ({ count }) => {
   return (
     <div className="flex flex-row gap-2 items-center mt-2">
       <AvatarGroup max={4}>
-        <Avatar sx={{ width: 24, height: 24 }} alt="Remy Sharp" src={avatar} />
+        <Avatar
+          sx={{ width: 24, height: 24 }}
+          alt="Remy Sharp"
+          src="http://127.0.0.1:3500/public/avatar.jpg"
+        />
         <Avatar
           sx={{ width: 24, height: 24 }}
           alt="Travis Howard"
-          src={avatar}
+          src="http://127.0.0.1:3500/public/avatar.jpg"
         />
-        <Avatar sx={{ width: 24, height: 24 }} alt="Cindy Baker" src={avatar} />
+        <Avatar
+          sx={{ width: 24, height: 24 }}
+          alt="Cindy Baker"
+          src="http://127.0.0.1:3500/public/avatar.jpg"
+        />
         <Avatar
           sx={{ width: 24, height: 24 }}
           alt="Agnes Walker"
-          src={avatar}
+          src="http://127.0.0.1:3500/public/avatar.jpg"
         />
       </AvatarGroup>
       <span className="text-xs text-gray-400 line-clamp-1">
