@@ -12,29 +12,6 @@ const CourseComponent = ({
 }) => {
   return (
     <Link to={`/course/${_id}`} className="border border-gray-200 rounded-lg">
-<<<<<<< Updated upstream
-      <div className="flex flex-row gap-4 p-4 h-max">
-        <img
-          loading="lazy"
-          src={image}
-          alt=""
-          className="w-[110px] h-[110px] object-cover border border-gray-100 rounded-xl"
-        />
-        <div className="flex flex-col w-full h-full items-start justify-between gap-7">
-          <div className="flex flex-col gap-3">
-            <h6 className="text-base font-bold text-gray-600 justify-items-stretch line-clamp-1">
-              {title}
-            </h6>
-            <div className="flex flex-row gap-1 items-center text-xs text-gray-400 line-clamp-1">
-              <span className="flex w-4 h-4 text-gray-300">
-                <User />
-              </span>
-              {teacher?.fullname}
-            </div>
-          </div>
-          <AvatarGroupWithImage count={attendees} />
-        </div>
-=======
       <div className="grid grid-cols-[110px_auto] gap-4 p-4 h-max">
         <div className="relative w-[110px] h-[110px] rounded-lg overflow-hidden">
           {!image ? (
@@ -67,7 +44,6 @@ const CourseComponent = ({
           </div>
           <AvatarGroupWithImage count={attendees} />
         </div>
->>>>>>> Stashed changes
       </div>
       <div className="p-4 border-t border-gray-200">
         <LinearProgress
