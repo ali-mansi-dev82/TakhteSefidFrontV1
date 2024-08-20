@@ -1,15 +1,36 @@
+import { bindActionCreators } from "@reduxjs/toolkit";
+import { Menu, MenuItem } from "@mui/material";
+import { connect } from "react-redux";
 import React from "react";
 
+import {
+  updateActivityTitle,
+  deleteActivity,
+} from "../../../features/course/createCourseSlice";
+import { ReactComponent as EllipsisVertical } from "../../../assets/icons/ellipsis-vertical.svg";
 import { ReactComponent as NotebookText } from "../../../assets/icons/notebook-text.svg";
 import { ReactComponent as Presentation } from "../../../assets/icons/presentation.svg";
 import { ReactComponent as NotebookPen } from "../../../assets/icons/notebook-pen.svg";
 import { ReactComponent as Check } from "../../../assets/icons/square-check-big.svg";
 import { ReactComponent as SquarePlay } from "../../../assets/icons/square-play.svg";
-import { ReactComponent as File } from "../../../assets/icons/file.svg";
 import { ReactComponent as Trash } from "../../../assets/icons/trash.svg";
-import { ReactComponent as PenLine } from "../../../assets/icons/pen-line.svg";
+import { ReactComponent as File } from "../../../assets/icons/file.svg";
+import EditableInput from "../../../components/editable_input";
+import useDisclosure from "../../../hooks/useDisclosure";
 
-const ActivityComponent = ({ title, type, date, time }) => {
+const ActivityComponent = ({
+  id,
+  title,
+  type,
+  date,
+  time,
+  sectionId,
+  deleteActivity,
+  updateActivityTitle,
+}) => {
+  const [isMenuOpen, openMenu, closeMenu] = useDisclosure(false);
+  const anchorRef = React.useRef(null);
+
   const getColor = () => {
     switch (type) {
       case "exam":
@@ -84,36 +105,58 @@ const ActivityComponent = ({ title, type, date, time }) => {
           {props.icon}
         </span>
         <div className="flex flex-col gap-1 line-clamp-1">
-          <p
-            className={`text-sm ${props.textPrimaryColor} font-semibold line-clamp-1`}
-          >
-            {title}
-          </p>
-          <p
+          <EditableInput
+            labelClass={`text-sm ${props.textPrimaryColor} font-semibold line-clamp-1`}
+            value={title}
+            setValue={(value) => {
+              updateActivityTitle({
+                sectionId,
+                activityId: id,
+                newTitle: value,
+              });
+            }}
+          />
+          {/* <p
             className={`text-xs ${props.textSecondaryColor} YekanBakhFaNum line-clamp-1`}
           >
             {date + " - " + time}
-          </p>
+          </p> */}
         </div>
       </div>
       <div className="inline-flex gap-2">
         <button
-          className={`inline-flex w-9 h-9 items-center justify-center ${props.btnBgColor} ${props.textPrimaryColor} rounded-md`}
+          type="button"
+          ref={anchorRef}
+          onClick={openMenu}
+          className="inline-flex w-8 h-8 items-center justify-center hover:bg-primary-0 text-primary-60 rounded-full"
         >
           <span className="inline-flex w-4">
-            <PenLine />
+            <EllipsisVertical />
           </span>
         </button>
-        <button
-          className={`inline-flex w-9 h-9 items-center justify-center ${props.btnBgColor} ${props.textPrimaryColor} rounded-md`}
+        <Menu
+          id="basic-menu"
+          open={isMenuOpen}
+          anchorEl={anchorRef.current}
+          onClose={closeMenu}
+          MenuListProps={{
+            "aria-labelledby": "basic-button",
+          }}
         >
-          <span className="inline-flex w-4">
-            <Trash />
-          </span>
-        </button>
+          <MenuItem
+            onClick={deleteActivity.bind(this, { sectionId, activityId: id })}
+          >
+            <div className="inline-flex gap-2 items-center h-4 text-red-700 text-base">
+              <Trash />
+              حذف
+            </div>
+          </MenuItem>
+        </Menu>
       </div>
     </li>
   );
 };
 
-export default ActivityComponent;
+const mapDispatchToProps = (dispatch) =>
+  bindActionCreators({ deleteActivity, updateActivityTitle }, dispatch);
+export default connect(null, mapDispatchToProps)(ActivityComponent);

@@ -3,67 +3,56 @@ import React from "react";
 import Image from "./preview_image";
 import { ReactComponent as ImageUp } from "../../../../assets/icons/image-up.svg";
 import { makeBlob } from "../../../../utils/blob";
+import axios from "axios";
+import { API_IMAGE_URL } from "../../../../constants/api_endpoints";
+import { setImage } from "../../../../features/course/createCourseSlice";
+import { bindActionCreators } from "@reduxjs/toolkit";
+import { connect, useSelector } from "react-redux";
+const UploadImages = ({ setImage }) => {
+  const { image } = useSelector((redux) => redux.create_course);
 
-const UploadImages = ({ images, setImages, uploadImageFn: noname }) => {
-  // const UploadImageMutation = useMutation({
-  //   mutationFn: uploadImageFn.bind(this),
-  // });
   async function handleChange(e) {
     const inputFiles = e.target.files;
     if (inputFiles.length > 0) {
-      Array.from(inputFiles).forEach(async (file) => {
-        const blob = await makeBlob(file);
-        setImages([
-          ...images,
-          {
+      const file = inputFiles[0];
+      const blob = makeBlob(file);
+      setImage({
+        name: file.name,
+        blob,
+        uploaded: false,
+        url: "",
+        percent: 0,
+      });
+
+      const onUploadProgressFn = (e) => {
+        setImage({
+          name: file.name,
+          blob,
+          uploaded: e?.upload,
+          url: "",
+          percent: e?.total - e.loaded,
+        });
+      };
+      try {
+        const formData = new FormData();
+        formData.append("image", file);
+        const { data } = await axios.post(
+          `${API_IMAGE_URL}/upload/`,
+          formData,
+          { onUploadProgress: onUploadProgressFn }
+        );
+        if (data?.url) {
+          setImage({
             name: file.name,
             blob,
-            uploaded: false,
-            id: "",
-            percent: 0,
-          },
-        ]);
-        // const formData = new FormData();
-        // formData.append("image", file);
-        // const onUploadProgressFn = (e) => {
-        //   setImages([
-        //     ...images.filter((item) => item.name !== file.name),
-        //     {
-        //       name: file.name,
-        //       blob,
-        //       uploaded: false,
-        //       id: "",
-        //       percent: e,
-        //     },
-        //   ]);
-        // };
-        // try {
-        //   UploadImageMutation.mutateAsync(
-        //     { data: formData, onUploadProgressFn },
-        //     {
-        //       onSuccess: (data) => {
-        //         if (data) {
-        //           setImages([
-        //             ...images.filter((item) => item.name !== file.name),
-        //             {
-        //               name: file.name,
-        //               blob,
-        //               uploaded: true,
-        //               id: data.data.name,
-        //               percent: 100,
-        //             },
-        //           ]);
-        //         }
-        //       },
-        //       onError: (error) => {
-        //         console.error(error);
-        //       },
-        //     }
-        //   );
-        // } catch (error) {
-        //   console.error(error);
-        // }
-      });
+            uploaded: true,
+            url: data?.url,
+            percent: 100,
+          });
+        }
+      } catch (error) {
+        console.error(error);
+      }
     }
   }
 
@@ -88,24 +77,22 @@ const UploadImages = ({ images, setImages, uploadImageFn: noname }) => {
           <input
             id="photo-dropbox"
             type="file"
-            multiple
             accept="image/jpeg,image/png"
             className="sr-only"
             onChange={handleChange}
           />
         </label>
-        {images?.length > 0 &&
-          images.map((value, index) => {
-            return <Image key={index} {...value} />;
-          })}
+        {image?.name && <Image key={1} {...image} />}
       </div>
 
       <div className="label">
         <span className="text-gray-400 text-xs">
-          تعداد عکس‌های انتخاب شده نباید بیشتر از ۲۰ باشد.
+          فقط یک عکس میتوانید انتخاب کنید.
         </span>
       </div>
     </section>
   );
 };
-export default UploadImages;
+const mapDispatchToProps = (dispatch) =>
+  bindActionCreators({ setImage }, dispatch);
+export default connect(null, mapDispatchToProps)(UploadImages);

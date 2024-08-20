@@ -79,7 +79,7 @@ const Mobile = () => {
             </div>
             <div className="w-full flex justify-around">
               <img
-                src="http://127.0.0.1:3500/public/educ_partner.webp.webp"
+                src="http://127.0.0.1:3500/public/educ_partner.webp"
                 loading="lazy"
                 alt="co_partner1"
               />
@@ -103,7 +103,7 @@ const Mobile = () => {
           <div className="w-full flex flex-col gap-12">
             <div className="w-full flex flex-col gap-4">
               <img
-                src="http://127.0.0.1:3500/public/exam.png"
+                src="http://127.0.0.1:3500/public/exam.webp"
                 alt=""
                 className="w-full"
               />
@@ -122,8 +122,8 @@ const Mobile = () => {
             </div>
             <div className="w-full flex flex-col gap-4">
               <img
-                loading="lazy"
                 src="http://127.0.0.1:3500/public/online_class.webp"
+                loading="lazy"
                 alt=""
                 className="w-full"
               />
@@ -143,6 +143,7 @@ const Mobile = () => {
             <div className="w-full flex flex-col gap-4">
               <img
                 src="http://127.0.0.1:3500/public/practise.webp"
+                loading="lazy"
                 alt=""
                 className="w-full"
               />
@@ -181,7 +182,7 @@ const Mobile = () => {
             </div>
             <div className="w-full flex flex-col gap-4">
               <img
-                src="http://127.0.0.1:3500/public/exam.png"
+                src="http://127.0.0.1:3500/public/exam.webp"
                 loading="eager"
                 alt=""
                 className="w-full"

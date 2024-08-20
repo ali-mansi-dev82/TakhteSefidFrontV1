@@ -77,7 +77,7 @@ const Desktop = () => {
             </div>
             <div className="w-full flex justify-between">
               <img
-                src="http://127.0.0.1:3500/public/educ_partner.webp.webp"
+                src="http://127.0.0.1:3500/public/educ_partner.webp"
                 loading="lazy"
                 alt="co_partner1"
               />
@@ -124,7 +124,7 @@ const Desktop = () => {
               </div>
               <img
                 loading="lazy"
-                src="http://127.0.0.1:3500/public/exam.png"
+                src="http://127.0.0.1:3500/public/exam.webp"
                 alt=""
                 className="w-[500px]"
               />

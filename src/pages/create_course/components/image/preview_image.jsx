@@ -29,7 +29,7 @@ const PreviewImage = ({
         loading="lazy"
       />
       {uploaded !== false && (
-        <div className="absolute w-max h-max p-1 rounded-md bg-gray-300 top-2 left-2 cursor-pointer opacity-40 hover:opacity-95">
+        <div className="inline-flex w-6 absolute h-max p-1 rounded-md bg-gray-300 top-2 left-2 cursor-pointer opacity-40 hover:opacity-95">
           <Trash />
         </div>
       )}

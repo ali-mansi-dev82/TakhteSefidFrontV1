@@ -6,7 +6,7 @@ import { ReactComponent as NotebookPen } from "../../../assets/icons/notebook-pe
 import { ReactComponent as Check } from "../../../assets/icons/square-check-big.svg";
 import { ReactComponent as SquarePlay } from "../../../assets/icons/square-play.svg";
 import { ReactComponent as File } from "../../../assets/icons/file.svg";
-import { dateFormate } from "../../../utils/dateFormat";
+// import { dateFormate } from "../../../utils/dateFormat";
 
 const ActivityComponent = ({ title, type, start }) => {
   const getColor = () => {
@@ -67,7 +67,7 @@ const ActivityComponent = ({ title, type, start }) => {
           btnBgColor: "bg-gray-100",
           textPrimaryColor: "text-gray-700",
           textSecondaryColor: "text-gray-600",
-        }; // Default color if type is not matched
+        };
     }
   };
   const props = getColor();
@@ -91,7 +91,7 @@ const ActivityComponent = ({ title, type, start }) => {
           <p
             className={`text-xs ${props.textSecondaryColor} YekanBakhFaNum line-clamp-1`}
           >
-            {dateFormate(start)}
+            {/* {dateFormate(start)} */}
           </p>
         </div>
       </div>
