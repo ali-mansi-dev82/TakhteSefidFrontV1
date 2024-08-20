@@ -1,6 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 
 import authReducer from "../features/auth/authSlice";
+import createCourseReducer from "../features/course/createCourseSlice";
 import { authApi } from "../services/authService";
 import { activityApi } from "../services/activityService";
 import { attendApi } from "../services/attendCourseService";
@@ -13,6 +14,7 @@ import { allCourseApi } from "../services/alCourseService";
 const store = configureStore({
   reducer: {
     auth: authReducer,
+    create_course: createCourseReducer,
     [authApi.reducerPath]: authApi.reducer,
     [activityApi.reducerPath]: activityApi.reducer,
     [myCourseApi.reducerPath]: myCourseApi.reducer,

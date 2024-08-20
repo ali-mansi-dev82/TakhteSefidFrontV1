@@ -1,19 +1,20 @@
-import { Button, Skeleton } from "@mui/material";
 import { Link, useParams } from "react-router-dom";
-import React from "react";
+import { Button, Skeleton } from "@mui/material";
 import { useSelector } from "react-redux";
+import React from "react";
 
-import InitialLayoutMobile from "../../layouts/mobile/single_layout";
+import { ReactComponent as ImageOff } from "../../assets/icons/image-off.svg";
+import { ReactComponent as Setting } from "../../assets/icons/settings-2.svg";
 import CircularProgressWithLabel from "./components/circleProgressWithLabel";
+import { useGetCourseDetailQuery } from "../../services/courseService";
+import InitialLayoutMobile from "../../layouts/mobile/single_layout";
+import AvatarGroupWithImage from "../../components/avatar_group";
 import SectionComponent from "./components/sectionComponent";
 import MainContainer from "../../components/container";
-import { useGetCourseDetailQuery } from "../../services/courseService";
-import { ReactComponent as Setting } from "../../assets/icons/settings-2.svg";
-import AvatarGroupWithImage from "../../components/avatar_group";
 
 const Mobile = () => {
   const { id } = useParams();
-  const { data } = useGetCourseDetailQuery(id);
+  const { data, isLoading } = useGetCourseDetailQuery(id);
   const { userInfo } = useSelector((redux) => redux.auth);
 
   return (
@@ -42,28 +43,42 @@ const Mobile = () => {
         ) : null
       }
     >
-      {data?.data?.image ? (
-        <img
-          loading="lazy"
-          src={data?.data?.image}
-          alt=""
-          className="w-full h-[250px] border-b border-gray-200 object-cover"
-        />
-      ) : (
+      {isLoading ? (
         <Skeleton height={250} />
+      ) : (
+        <div className="w-full h-[250px] border-b overflow-hidden">
+          {!data?.data?.image ? (
+            <div className="w-full h-[250px] flex items-center justify-center bg-gray-100">
+              <span className="flex w-7 h-7 text-gray-400">
+                <ImageOff />
+              </span>
+            </div>
+          ) : (
+            <img
+              loading="lazy"
+              src={data?.data?.image}
+              alt=""
+              className="w-full h-[250px] border-b border-gray-200 object-cover"
+            />
+          )}{" "}
+        </div>
       )}
 
       <MainContainer className="py-5">
         <div className="flex flex-col gap-4">
           <div className="text-lg font-bold text-gray-700">
-            {data?.data?.title || <Skeleton height={65} />}
+            {isLoading ? <Skeleton height={65} /> : data?.data?.title}
           </div>
           <div className="text-sm text-gray-400">
-            {data?.data?.teacher?.fullname || <Skeleton height={65} />}
+            {isLoading ? (
+              <Skeleton height={65} />
+            ) : (
+              data?.data?.teacher?.fullname
+            )}
           </div>
-          <AvatarGroupWithImage count={data?.attendes} />
+          {isLoading ? <Skeleton height={65} /> : <AvatarGroupWithImage count={data?.attendes} />}
           <p className="text-sm leading-7 text-gray-400">
-            {data?.data?.description || <Skeleton height={65} />}
+            {isLoading ? <Skeleton height={65} /> : data?.data?.description}
           </p>
           {data?.data?.sections && data?.data?.sections?.length > 0 ? (
             <ul className="flex flex-col border border-gray-300 justify-center rounded-xl overflow-hidden">

@@ -12,7 +12,7 @@ const Index = () => {
   const weekData = useMemo(() => {
     const days = ["شنبه", "یک", "دو", "سه", "چهار", "پنج", "جمعـ"];
 
-    if (activities.status === "fulfilled") {
+    if (activities?.status === "fulfilled") {
       const today = moment();
       const startOfWeek = moment(today).startOf("week");
       const daysOfWeek = [];
@@ -21,7 +21,7 @@ const Index = () => {
         const currentDay = moment(startOfWeek).add(i, "days");
         const dayOfMonth = currentDay.format("jDD");
         const dayOfWeek = days[i];
-        const dayActivities = activities.data?.filter((activity) => {
+        const dayActivities = activities?.data?.filter((activity) => {
           return moment
             .from(activity.start, "en", "YYYY-MM-DD")
             .isSame(currentDay, "day");

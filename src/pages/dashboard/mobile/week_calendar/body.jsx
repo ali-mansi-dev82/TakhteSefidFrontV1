@@ -10,11 +10,11 @@ const Body = ({ weekData }) => {
   const [daySelectActivity, setDaySelectActivity] = useState([]);
 
   useEffect(() => {
-    const daySelectData = weekData.filter(
+    const daySelectData = weekData?.filter(
       (value) => value.dayOfMonth === daySelect
     );
     if (daySelectData.length > 0) {
-      const daySelectActivityData = daySelectData[0].activities;
+      const daySelectActivityData = daySelectData[0]?.activities;
       setDaySelectActivity(daySelectActivityData);
     }
   }, [daySelect, weekData]);
@@ -58,7 +58,7 @@ const Body = ({ weekData }) => {
         ))}
       </div>
       <div className="flex flex-col min-h-[25vh] gap-4 mt-4">
-        {daySelectActivity.length > 0 ? (
+        {daySelectActivity?.length > 0 ? (
           daySelectActivity?.map((item) => <ActivityComponent {...item} />)
         ) : (
           <div className="text-xs text-gray-500 text-center h-full items-stretch pt-12">

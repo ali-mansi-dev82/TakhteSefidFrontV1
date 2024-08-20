@@ -1,109 +1,121 @@
-import React, { useState } from "react";
-import { Autocomplete, Button, TextField } from "@mui/material";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { bindActionCreators } from "@reduxjs/toolkit";
+import { connect, useSelector } from "react-redux";
+import { Button, TextField } from "@mui/material";
+import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
+import React from "react";
 
 import InitialLayoutMobile from "../../layouts/mobile/single_layout";
-import SectionComponent from "./components/section_component";
+import { ReactComponent as Plus } from "../../assets/icons/plus.svg";
+import { addSection } from "../../features/course/createCourseSlice";
+import { create_course } from "../../features/course/action";
 import UploadImages from "./components/image/upload_image";
+import AddActivity from "./components/modals/add_activity";
+import { createCourseSchema } from "./schema";
+import Section from "./components/section";
 
-const Mobile = () => {
-  const [images, setImages] = useState([]);
-  const section = [
-    {
-      title: "مقدمه",
-      activity: [
-        {
-          type: "exam",
-          title: "امتحان فتوشاپ",
-          date: "10 فروردین 1403",
-          time: "14:30",
-        },
-        {
-          type: "practice",
-          title: "انجام تکلیف طراحی گرافیک",
-          date: "11 فروردین 1403",
-          time: "14:30",
-        },
-        {
-          type: "class",
-          title: "طراحی گرافیک",
-          date: "14 فروردین 1403",
-          time: "14:30",
-        },
-      ],
-    },
-    {
-      title: "فصل 1",
-      activity: [
-        {
-          type: "file",
-          title: "طراحی گرافیک",
-          date: "14 فروردین 1403",
-          time: "14:30",
-        },
-        {
-          type: "blog",
-          title: "طراحی گرافیک",
-          date: "14 فروردین 1403",
-          time: "14:30",
-        },
-        {
-          type: "video",
-          title: "طراحی گرافیک",
-          date: "14 فروردین 1403",
-          time: "14:30",
-        },
-      ],
-    },
-  ];
+const Mobile = ({ create_course, addSection }) => {
+  const { image, sections, activityModal } = useSelector(
+    (redux) => redux.create_course
+  );
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(createCourseSchema),
+  });
+
+  const onSubmit = (data) => {
+    data.sections = sections;
+    data.image = image.url;
+    create_course(data);
+  };
 
   return (
-    <InitialLayoutMobile
-      title="ثبت دوره جدید"
-      inerrButtonNavigation={
-        <div className="w-full inline-flex gap-4 px-4">
-          <Button variant="contained" size="large" fullWidth>
-            ثبت دوره
-          </Button>
-          <Button variant="outlined" size="large" fullWidth>
-            انصراف
-          </Button>
-        </div>
-      }
-    >
-      <div className="flex flex-col gap-4">
-        <UploadImages images={images} setImages={setImages} />
-        <TextField label="عنوان دوره" />
-        <TextField label="توضیحات" multiline rows={3} />
-        <Autocomplete
-          multiple
-          fullWidth
-          limitTags={2}
-          id="multiple-limit-tags"
-          options={[
-            { title: "طراحی رابط کاربری" },
-            { title: "طراحی گرافیک" },
-            { title: "تکنولوژی" },
-          ]}
-          defaultValue={[{ title: "طراحی گرافیک" }]}
-          getOptionLabel={(option) => option.title}
-          renderInput={(params) => (
-            <TextField fullWidth label="تگ ها" {...params} />
-          )}
-        />
-        <ul className="flex flex-col border border-gray-300 justify-center rounded-md overflow-hidden">
-          <li className="inline-flex justify-between items-center px-3 py-4 bg-gray-100 ">
-            <span className="text-base text-primary-60 font-bold">
-              سرفصل ها
-            </span>
-            <Button variant="contained">سرفصل جدید</Button>
-          </li>
-          {section.map((item) => (
-            <SectionComponent {...item} />
-          ))}
-        </ul>
-      </div>
-    </InitialLayoutMobile>
+    <>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <InitialLayoutMobile
+          title="ثبت دوره جدید"
+          inerrButtonNavigation={
+            <div className="w-full inline-flex gap-4 px-4">
+              <Button variant="contained" size="medium" type="submit" fullWidth>
+                ثبت دوره
+              </Button>
+              <Link to={`/dashboard`} className="w-full">
+                <Button variant="outlined" size="medium" fullWidth>
+                  انصراف
+                </Button>
+              </Link>
+            </div>
+          }
+        >
+          <div className="flex flex-col gap-4">
+            <UploadImages />
+            <div className="flex flex-col gap-2">
+              <TextField
+                {...register("title")}
+                error={errors?.title?.message}
+                label="عنوان دوره"
+              />
+              <p className="text-xs text-red-600">{errors?.title?.message}</p>
+            </div>
+            <div className="flex flex-col gap-2">
+              <TextField
+                {...register("description")}
+                label="توضیحات"
+                multiline
+                rows={3}
+              />
+              <p className="text-xs text-red-600">
+                {errors?.description?.message}
+              </p>
+            </div>
+            <div className="flex flex-col gap-2">
+              <TextField
+                {...register("start")}
+                label="تاریخ شروع"
+                type="date"
+              />
+              <p className="text-xs text-red-600">{errors?.start?.message}</p>
+            </div>
+            <div className="flex flex-col gap-2">
+              <TextField {...register("end")} label="تاریخ پایان" type="date" />
+              <p className="text-xs text-red-600">{errors?.end?.message}</p>
+            </div>
+            <div className="flex flex-col gap-3 pt-4">
+              <p className="text-base text-primary-60 font-bold">سرفصل ها</p>
+              <ul className="flex flex-col gap-4 justify-center rounded-md overflow-hidden">
+                {sections?.map((section, index) => (
+                  <Section key={section?.id} {...section} sectionIndex={index} />
+                ))}
+                <li
+                  onClick={addSection}
+                  className="text-center py-1 border border-gray-300 rounded-lg"
+                >
+                  <Button
+                    variant="text"
+                    startIcon={
+                      <span className="flex w-4">
+                        <Plus />
+                      </span>
+                    }
+                  >
+                    سرفصل جدید
+                  </Button>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </InitialLayoutMobile>
+      </form>
+      {activityModal?.isOpen && <AddActivity />}
+    </>
   );
 };
 
-export default Mobile;
+const mapDispatchToProps = (dispatch) =>
+  bindActionCreators({ create_course, addSection }, dispatch);
+export default connect(null, mapDispatchToProps)(Mobile);

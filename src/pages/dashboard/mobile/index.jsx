@@ -18,7 +18,7 @@ const Mobile = () => {
           <div className="text-base text-primary-60 font-semibold">
             خوش اومدی،{" "}
             <span>
-              {userInfo.fullname
+              {userInfo?.fullname
                 ? `${userInfo.fullname} جان!`
                 : "کاربر تخته سفید"}
             </span>{" "}
